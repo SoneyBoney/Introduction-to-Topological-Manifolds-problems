@@ -160,7 +160,28 @@
     Prove Proposition 2.30(characterization of continuity, openness, and closedness in terms of closures and interiors).\\
     Suppose $X$ and $Y$ are topological spaces, and $f: X \to Y$ is any map.\\
     (a) $f$ is continuous if and only if $f(\overline{A}) \subseteq \overline{f(A)}$ for all $A \subseteq X$.\\
-    (b)
+    (b) $f$ is closed if and only if $f(\overline{A}) \supseteq \overline{f(A)}$ for all $A \subseteq X$.\\
+    (c) f is continuous if and only if $f^{-1}(\text{Int} \, B) \subseteq \text{Int} \, f^{-1}(B)$ for all $B \subseteq Y$.\\
+    (d) f is open if and only if $f^{-1}(\text{Int }B) \supseteq \text{Int }f^{-1}(B)$ for all $B \subseteq Y$.
+\end{p}
+\begin{s}{}
+    (a) Let $B \subseteq Y$ be closed. Then $B = \overline{B}$, and also $f^{-1}(B) = f^{-1}(\overline{B})$. There exists 
+    $A \subseteq X$ such that $A = f(B)$. Then $f(\overline{A}) \subseteq \overline{f(A)}$ implies 
+    $\overline{A} \subseteq f(\overline{B})$. Then $f^{-1}(B) \subseteq \overline{A} \subseteq f^{-1}(\overline{B})$, and since
+    $f^{-1}(B) = f^{-1}(\overline{B})$, $\overline{A} = f^{-1}(B)$ so $f^{-1}(B)$ is closed.\\
+    Let $f$ be continuous. Let $f(A) \subseteq Y$, so $\overline{f(A)}$ is closed. Since $f$ is continuous,
+    $f^{-1}(\overline{f(A)})$ is closed and contains $A$, thus it contains $\overline{A}$ since the closure of $A$ is the smallest
+    closed set that contains $A$.\\
+    (b) The proof is basically the same as part (a).\\
+    (c) Let $B \subseteq Y$. Since $f$ is continuous, $f^{-1}(\text{Int }B)$ is open. And since $\text{Int }B \subseteq B$,
+    $f^{-1}(\text{Int }B)$ is contained in $f^{-1}(B)$, so is contained in $\text{Int }f^{-1}(B)$.\\
+    Conversely, let $B \subseteq Y$ be open. Then $B = \text{Int }B$. Then we have 
+    $f^{-1}(B) \subseteq = f^{-1}(\text{Int }B) \subseteq \text{Int }f^{-1}(B)$. By definition, interiors are contained in the 
+    subset, thus $\text{Int }f^{-1}(B) = f^{-1}(B)$, so the preimage is open so $f$ is continuous.\\
+    (d) same as part (c)
+\end{s}
+
+\begin{p}{}
 \end{p}
 \begin{s}{}
 \end{s}
@@ -169,5 +190,6 @@
 \end{p}
 \begin{s}{}
 \end{s}
+
 
 \end{document}
