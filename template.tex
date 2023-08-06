@@ -17,7 +17,7 @@
 %Redefining sections as problems
 %
 \makeatletter
-\newenvironment{problem}{\@startsection
+\newenvironment{p}{\@startsection
        {section}
        {1}
        {-.2em}
@@ -30,7 +30,7 @@
 \makeatother
 
 \makeatletter
-\newenvironment{solution}{\@startsection
+\newenvironment{s}{\@startsection
        {subsection}
        {2}
        {-.2em}
@@ -72,9 +72,9 @@
 
 \thispagestyle{empty}
 
-\begin{problem}{}
-\end{problem}
-\begin{solution}{}
-\end{solution}
+\begin{p}{}
+\end{p}
+\begin{s}{}
+\end{s}
 
 \end{document}

@@ -1,0 +1,137 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%This is a science homework template. Modify the preamble to suit your needs. 
+%The junk text is   there for you to immediately see how the headers/footers look at first 
+%typesetting.
+
+
+\documentclass[12pt]{article}
+
+%AMS-TeX packages
+\usepackage{amssymb,amsmath,amsthm} 
+%geometry (sets margin) and other useful packages
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,ctable,booktabs,mathrsfs}
+
+
+%
+%Redefining sections as problems
+%
+\makeatletter
+\newenvironment{problem}{\@startsection
+       {section}
+       {1}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent{P }
+       }
+       }
+\makeatother
+
+\makeatletter
+\newenvironment{solution}{\@startsection
+       {subsection}
+       {2}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent\emph{(sol) }
+       }
+       }
+\makeatother
+
+%
+%Fancy-header package to modify header/page numbering 
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep} %these change header-rule width
+%\addtolength{\headwidth}{\marginparwidth}
+\chead{} 
+\rhead{\thepage} 
+\cfoot{} 
+\renewcommand{\headrulewidth}{.3pt} 
+\renewcommand{\footrulewidth}{.3pt}
+\setlength\voffset{-0.25in}
+\setlength\textheight{648pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%Contents of problem set
+%    
+\begin{document}
+
+\title{Chapter 2 Exercises}
+\author{Campinghedgehog}
+\date{July 16, 2023}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{problem}{2.4}
+    (a) Suppose $M$ is a set and $d,d'$ are two different metrics on $M$. Prove that $d$ and $d'$ generate the
+    same topology on $M$ if and only if the following condition is satisfied:
+    for every $x \in M$ and every $r > 0$, there exist positive numbers $r_1$ and $r_2$ such that 
+    $B_{r_1}^{(d')}(x) \subseteq B_{r}^{(d)}(x)$ and $B_{r_2}^{(d)}(x) \subset B_{r}^{(d')}(x)$ \\
+    (b) Let $(M,d)$ be a metric space, let $c$ be a positive real number, and define a new metric $d'$
+    on $M$ by $d'(x,y)=c \cdot d(x,y)$. Prove that $d$ and $d'$ generate the same topology on $M$.\\
+    (c) Define a metric $d'$ on $\mathbb{R}^n$ by $d'(x,y)=max\{|x_1-y_1|,\dots,|x_n-y_n|\}$. Show that
+    the Euclidian metric and $d'$ generate the same topology.\\
+    (d) Let $X$ be any set, and let $d$ be the discrete metric on $X$. Show that $d$ generates the discrete
+    topology.\\
+    (e) Show that the discrete metric and the Euclidian metric generate the same topology on the set
+    $\mathbb{Z}$ of integers.
+\end{problem}
+\begin{solution}{}
+    (a) Assume $d,d'$ generate the same topology. Then $r_1=r_2=r$ works.\\
+    Conversely assume the condition holds. We want to show that an open set with respect to $d$ is also open
+    in $d'$ and vice versa. Let $U$ be open in $d$. Let $B_{r}^{d} \subseteq U$ be open. Then from 
+    the hypothesis there exists an $r_1$ such that $B_{r_1}^{(d')}(x) \subseteq B_{r}^{(d)}(x)$. This applies 
+    to all points in $U$, so it is a union of open balls wrt to $d'$, thus $U$ is open in $d'$.
+    The converse follows similarly. \\
+    (b) For every open ball with radius $r$ in $d'$ just divide by $c$ for the radius in $d$ and vice versa. \\
+    (c) Exercise B.1 implies there exists a constant $c \le \sqrt(n)$ such that $d'(x,y) = c \cdot |x-y|$. 
+    So part b implies the result.\\
+    (d) Any subset can be formed since all distances are 1.\\
+    (e) The Euclidian metric on the integers yields open balls containing just the integer itself. So for any
+    set, the union of all the singletons containing the integer elements is open.
+\end{solution}
+
+\begin{problem}{2.9}
+    Let $X$ be a topological space and let $A \subseteq X$ be any subset.\\
+    (c) A point is in $\partial A$ if and only if every neighborhood of it contains both at point of A and a 
+    point of $X \setminus A$.\\
+    (d) A point is in $\overline A$ if and only if every neighborhood of it contains a point of $A$.\\
+    (e)
+\end{problem}
+\begin{solution}{}
+    (c) Let $x \in \partial A$ and $U$ be an open neighborhood of $x$. If $U \cap A = \emptyset$ then $U$ is 
+    in the exterior of $A$ and so is $x$ so $x \notin \partial A$. The same goes for $X \setminus A$.\\
+    Similarly if a neighborhood of $x$ is contained in either Int $A$ or Ext $A$, then the neighborhood is
+    completely contained in it, which is disjoint from $\partial A$.\\
+    (d) $\overline A$ is either the interior of $A$ or the boundary $A$ both of which every neighborhood 
+    contains a point of $A$.\\
+    ()
+\end{solution}
+
+\begin{problem}{2.18}
+    Prove parts (a)-(c) of Proposition 2.17
+\end{problem}
+\begin{solution}{}
+    (a) Singleton is closed, and the domain, i.e. the whole of $X$ is also closed. \\
+    (b) trivial\\
+    (c) Open subset of $X$ inherits the topology of $X$, so the restriction is also continuous.
+\end{solution}
+
+
+
+\begin{problem}{}
+\end{problem}
+\begin{solution}{}
+\end{solution}
+
+\end{document}

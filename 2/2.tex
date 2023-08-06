@@ -1,0 +1,173 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%This is a science homework template. Modify the preamble to suit your needs. 
+%The junk text is   there for you to immediately see how the headers/footers look at first 
+%typesetting.
+
+
+\documentclass[12pt]{article}
+
+%AMS-TeX packages
+\usepackage{amssymb,amsmath,amsthm} 
+%geometry (sets margin) and other useful packages
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,ctable,booktabs,mathrsfs}
+
+
+%
+%Redefining sections as problems
+%
+\makeatletter
+\newenvironment{p}{\@startsection
+       {section}
+       {1}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent{P }
+       }
+       }
+\makeatother
+
+\makeatletter
+\newenvironment{s}{\@startsection
+       {subsection}
+       {2}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent\emph{(sol) }
+       }
+       }
+\makeatother
+
+%
+%Fancy-header package to modify header/page numbering 
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep} %these change header-rule width
+%\addtolength{\headwidth}{\marginparwidth}
+\chead{} 
+\rhead{\thepage} 
+\cfoot{} 
+\renewcommand{\headrulewidth}{.3pt} 
+\renewcommand{\footrulewidth}{.3pt}
+\setlength\voffset{-0.25in}
+\setlength\textheight{648pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%Contents of problem set
+%    
+\begin{document}
+
+\title{Chapter 2 Problems}
+\author{Campinghedgehog}
+\date{August 5, 2023}
+
+\maketitle
+
+\thispagestyle{empty}
+
+
+\begin{p}{1}
+    Let $X$ be an infinite set.\\
+    (a) Show that 
+    $$\mathscr{T}_1 = \{U\subseteq X : U = \emptyset \text{ or } X \setminus U \text{ is finite } \}$$
+    is a topology on $X$, called the finite complement topology.\\
+    (b) Show that 
+    $$\mathscr{T}_2 = \{U\subseteq X : U = \emptyset \text{ or } X \setminus U \text{ is countable } \}$$
+    is a topology on $X$, called the countable complement topology.\\
+    (c) Let $p$ be an arbitrary point in $X$, and show that 
+    $$\mathscr{T}_3 = \{U\subseteq X : U = \emptyset \text{ or } p\in U \}$$
+    is a topology on $X$, called the particular point topology.\\
+    (d) Let $p$ be an arbitrary point in $X$, and show that 
+    $$\mathscr{T}_4 = \{U\subseteq X : U = X \text{ or } p \notin U \}$$
+    is a topology on $X$, called the excluded point topology.\\
+    (e) Determine whether
+    $$\mathscr{T}_5 = \{U\subseteq X : U = \emptyset \text{ or } X \setminus U \text{ is infinite } \}$$
+    is a topology on $X$. 
+\end{p}
+\begin{s}{1}
+    (a) By definition $\emptyset \in \mathscr{T}_1$. But also $X$ is open since $\emptyset$ is a finite set.
+    Let $U_1$ and $U_2$ be open sets. Then $X \setminus (U_1 \cap U_2) = (X\setminus U_1) \cup (X\setminus U_2)$,
+    both of which are finite which means their union is finite. Induction shows that finite intersection of open sets is open.
+    Let $\bigcup_{\alpha \in A} U_{\alpha}$ be a union of open sets. Then
+    $X \setminus\bigcup_{\alpha \in A} U_{\alpha} = \bigcap_{\alpha \in A}(X \setminus U_\alpha)$.
+    Since each $(X \setminus U_\alpha)$ is finite, the intersection is finite. \\
+    (b) The prove for countable complement is exactly the same as finite since all the same conditions apply for countablility.\\
+    (c) Empty set and $X$ are open by definition. Finite intersection of sets containing $p$ will also contain $p$. Same for arbitrary union.\\
+    (d) $X$ is open by definition. $\emptyset$ is open since it contains no points. The rest is the same as (c)\\
+    (e) No. Unions can become non infinite. Eg. Integers, even numbers and odd numbers. Complement is empty.
+\end{s}
+
+
+\begin{p}{2}
+    Let $X=\{1,2,3\}$. Give a list of topologies on $X$ such that every topology on $X$ is homeomorphic to exactly one on your list.
+\end{p}
+\begin{s}{2}
+    TODO
+\end{s}
+
+
+\begin{p}{3}
+    Let $X$ be a topological space and $B$ be a subset of $X$. Prove that following set equalities.\\
+    (a) $\overline{X \setminus B} =  X \setminus \, Int \, B$ \\
+    (b) $Int(X \setminus B) = X\setminus \overline{B}$
+\end{p}
+\begin{s}{3}
+    (a) $\overline{X \setminus B}$ is the exterior of $B$ plus boundary, which is equivalent to $X$ minus the interior of $B$.\\
+    (b) $Int(X \setminus B)$ is equal to the exterior of $B$, which is equal by definition to $X\setminus \overline{B}$.
+\end{s}
+
+\begin{p}{4}
+    Let $X$ be a topological space and $\mathscr{A}$ be a collection of subsets of $X$. Prove the
+    following containments:\\
+    (a) $$\overline{\bigcap_{A \in \mathscr{A}} A} \subseteq \bigcap_{A\in \mathscr{A}}\overline{A}$$
+    (b) $$\overline{\bigcup_{A \in \mathscr{A}} A} \supseteq \bigcup_{A\in \mathscr{A}}\overline{A}$$
+    (c) $$Int\bigg(\bigcap_{A \in \mathscr{A}}A\bigg)\subseteq \bigcap_{A \in \mathscr{A}} Int \, A$$
+    (d) $$Int\bigg(\bigcup_{A \in \mathscr{A}}A\bigg)\supseteq \bigcup_{A \in \mathscr{A}} Int \, A$$
+    When $\mathscr{A}$ is a finite collection, show that the equality holds in (b) and (c), but not 
+    necessarily in (a) or (d).
+\end{p}
+\begin{s}{4}
+    (a) The righthand side is an intersection of closed sets containing $A$, and thus is closed. The 
+    left hand side the the closure of the intersection of $A$s, which is the smallest closed set containing
+    $A$s so the containment follows.\\
+    (b) for all $A\in\mathscr{A}, A \subseteq \bigcup_{A \in \mathscr{A}} A$, which implies
+    $$A\in\mathscr{A}, \overline{A} \subseteq \overline{\bigcup_{A \in \mathscr{A}} A}$$,
+    which implies the resulting containment.\\
+    (c) $$\forall A \in \mathscr{A}, \bigcap_{A \in \mathscr{A}}A \subseteq A$$
+    $$\implies \forall A \in \mathscr{A}, Int\bigg(\bigcap_{A \in \mathscr{A}}A\bigg) \subseteq Int\,A$$
+    Since this is for all $A$, the result follows.\\
+    (d) The lefthand side is a union of open sets contained in $A$, and the right hand side
+    is the largest open set contained in union $A$, so the result follows.\\
+    When $\mathscr{A}$ is a finite collection, the unions of closures and intersections of interiors
+    is closed and open respectively. And closed sets are equal to its closure and open sets its interior.
+    TODO: idk about (a) and (b)
+\end{s}
+
+\begin{p}{5}
+    Too hard
+\end{p}
+\begin{s}{}
+\end{s}
+
+\begin{p}{6}
+    Prove Proposition 2.30(characterization of continuity, openness, and closedness in terms of closures and interiors).\\
+    Suppose $X$ and $Y$ are topological spaces, and $f: X \to Y$ is any map.\\
+    (a) $f$ is continuous if and only if $f(\overline{A}) \subseteq \overline{f(A)}$ for all $A \subseteq X$.\\
+    (b)
+\end{p}
+\begin{s}{}
+\end{s}
+
+\begin{p}{}
+\end{p}
+\begin{s}{}
+\end{s}
+
+\end{document}
