@@ -164,7 +164,7 @@
     (c) f is continuous if and only if $f^{-1}(\text{Int} \, B) \subseteq \text{Int} \, f^{-1}(B)$ for all $B \subseteq Y$.\\
     (d) f is open if and only if $f^{-1}(\text{Int }B) \supseteq \text{Int }f^{-1}(B)$ for all $B \subseteq Y$.
 \end{p}
-\begin{s}{}
+\begin{s}{6}
     (a) Let $B \subseteq Y$ be closed. Then $B = \overline{B}$, and also $f^{-1}(B) = f^{-1}(\overline{B})$. There exists 
     $A \subseteq X$ such that $A = f(B)$. Then $f(\overline{A}) \subseteq \overline{f(A)}$ implies 
     $\overline{A} \subseteq f(\overline{B})$. Then $f^{-1}(B) \subseteq \overline{A} \subseteq f^{-1}(\overline{B})$, and since
@@ -181,9 +181,243 @@
     (d) same as part (c)
 \end{s}
 
-\begin{p}{}
+\begin{p}{7}
+    Prove proposition 2.39 (in a Hausdorff space, every neighborhood of a limit point contains
+    infinitely many points of the set).
 \end{p}
-\begin{s}{}
+\begin{s}{7}
+    Let $X$ be Hausdorff. Let $p \in X$ be a limit point. Suppose there exists some neighborhood of $p$
+    with only finitely many points. Since $X$ is Hausdorff, we can separate any point in the 
+    neighborhood (not equal to $p$ itself) with open sets. Then there exists some new neighborhood
+    of $p$ that does not contain any of the points in the original neighborhood, which means there
+    exists a neighborhood of $p$ that does not contain any other points, which contradicts the assumption
+    that $p$ is a limit point.
+    \qed
+\end{s}
+
+
+\begin{p}{8}
+    Let $X$ be a Hausdorff space, let $A \subseteq X$, and let $A'$ denote the set of
+    limit points of $A$. Show that $A'$ is closed in X.
+\end{p}
+\begin{s}{8}
+    Will show that $X \setminus A'$ is open. Let $p\in X \setminus A'$. Let $V_p$ be an 
+    open neighborhood of $p$ such that $V_p \cap A$ is empty or only contains $p$ itself.
+    This exists because $p$ is not a limit point of $A$. With Hausdorff property, and since
+    $p$ is an isolated point and thus $\{p\}$ is open, we have that $V_p \setminus \{p\}$
+    is also open. By construction, $V_p \setminus \{p\} \cap A$ is empty, which means 
+    all the points in $V_p$ are also not limit points of $A$ thus $V_p \subseteq X \setminus A'$,
+    so $A'$ is closed.
+    \qed
+\end{s}
+
+\begin{p}{9}
+    Suppose $D$ is a discrete space, $T$ is a space with the trivial topology, $H$ is a 
+    Hausdorff space, and $A$ is an arbitrary topological space.\\
+    (a) Show that every map from $D$ to $A$ is continuous.\\
+    (b) Show that every map from $A$ to $T$ is continuous.\\
+    (c) Show that the only continuous map from $T$ to $H$ are the constant maps.
+\end{p}
+\begin{s}{9}
+    (a) Every possible subset in a discrete space is open, so any preimage is open,
+    so the funciton has to be continuous.\\
+    (b) The empty preimage is trivially open. And the preimage of the whole domain is the 
+    whole codomain which is open.\\
+    (c) Suppose for the sake of contradiction that there exists a continuous map $f: T \to H$
+    such that $f$ is not constant. Let $V$ be an open set that contains more than 2 points,
+    call them $p,q$. Since $f$ is not constant we can let $f^{-1}(p)\ne f^{-1}(q)$, 
+    Then we can separate the 2 points with disjoint open sets. It follows that the preimages of
+    these 2 open sets are not both empty, nor both the whole co-domain. Thus contradicting the
+    assumption that $T$ is a trivial space. 
+    \qed
+\end{s}
+
+\begin{p}{10}
+    Suppose $f,g: X \to Y$ are continuous maps and $Y$ is Hausdorff. Show that the set
+    $\{x \in X : f(x)=g(x)\}$ is closed in $X$. Give a counterexample if $Y$ is not Hausdorff.
+\end{p}
+\begin{s}{10}
+    Will show that $\{x \in X: f(x) \ne g(x)\}$ is open. Let $x\in \{x \in X: f(x) \ne g(x)\}$.
+    Since $Y$ is Hausdorff, there exists disjoint open neighborhoods $V_{f(x)}$ and $V_{g(x)}$.
+    Since both $f,g$ are continuous, the preimages $f^{-1}(V_{f(x)}),g^{-1}(V_{g(x)})$, are also
+    open. Call them $U_f$ and $U_g$. $U_f \cap U_g$ contains $x$ by construction and since both
+    are open, the intersection is open. The last step is to show that 
+    $$U_f \cap U_g \subseteq \{x \in X: f(x) \ne g(x)\}$$
+    Let $p \in U_f \cap U_g$ be arbitrary. Then since $V_{f(x)}$ and $V_{g(x)}$ are disjoint,
+    $f(p) \ne g(p)$.\\
+    If $Y$ is not Hausdorff, then the last part of the proof above may not be true.
+    \qed
+\end{s}
+
+\begin{p}{11}
+    Let $f:X\to Y$ be a continuous map between topologocial spaces, and let $\mathscr{B}$
+    be a basis of the topology on $X$. Let $f(\mathscr{B})$ denote the collection
+    $\{f(B):B \in \mathscr{B}\}$. Show that $f(\mathscr{B})$ is a basis for the topology 
+    of Y if and only if $f$ is surjective and open. 
+\end{p}
+\begin{s}{11}
+    $(\implies)$ Assume $f(\mathscr{B})$ is a basis for the topology of $Y$. Then $f$ is 
+    surjective since a basis covers the entire space $Y$. If $f$ was not an open mapping,
+    then there exists some $B\in \mathscr{B}$ such that $f(B)$ is not open. But this is not 
+    possible since by definition of a basis, of which $f(\mathscr{B})$ is, each element 
+    must be open. \\
+    $(\impliedby)$ Assume that $f$ is surjective and open. Since $f$ is open, each 
+    $f(B)$ is also open, fulfilling part of the definition of a basis. Now we just need
+    to show that each open set in $Y$ is a union of some $f(B)s$. Here we probably use 
+    the contiuity assumption. Let $V \subseteq Y$ be an open set. Since $f$ is continuous,
+    $f^{-1}(V)$ is also open. Since $\mathscr{B}$ is a basis for $X$, there exists some 
+    collection $A$ such that $f^{-1}(V)=\bigcup_{\alpha \in A} B_\alpha$. 
+    So $V=f(f^{-1}(V))=f(\bigcup_{\alpha \in A} B_\alpha) \subseteq f(\mathscr{B})$.
+    Thus $f(\mathscr{B})$ is a basis for $Y$.
+    \qed
+\end{s}
+
+\begin{p}{12}
+    Suppose $X$ is a set, and $\mathscr{A} \subseteq \mathscr{P}(X)$ is any collection of 
+    subsets of $X$. Let $\mathscr{T} \subseteq \mathscr{P}(X)$ be the collection of subsets
+    consisting of $X,\emptyset$, and all unions of finite intersection of elements of $\mathscr{A}$.\\
+    (a) Show that $\mathscr{T}$ is a topology. (It is called the topology generated by $\mathscr{A}$,
+    and $\mathscr{A}$ is called the subbasis for $\mathscr{T}$)\\
+    (b) Show that $\mathscr{T}$ is the coursest topologt for which all the sets in $\mathscr{A}$ are open.\\
+    (c) Let $Y$ be any topological space. Show that a map $f: Y\to X$ is continuous if and only if
+    $f^{-1}(U)$ is open in $Y$ for every $U \in \mathscr{A}$.
+\end{p}
+\begin{s}{12}
+    (a) By definition, $X,\emptyset$ are in $\mathscr{T}$. A finite intersection cannot 
+    break out of $\mathscr{T}$ because intersections can only make sets smaller.
+    So picking just single sets out of arbitrary unions, and then taking their intersection is
+    the best way to break out. However, by definition $\mathscr{T}$ is formed by unions of 
+    finite intersections, so by definition finite intersections of $\mathscr{T}$ are still in
+    $\mathscr{T}$. An arbitrary union of elements of $\mathscr{T}$ is still an arbitrary union of
+    of finite intersections of $A$. \\
+    (b) If any set is missing from $\mathscr{T}$, then it is no longer a topology, which means that
+    $\mathscr{T}$ is the coarsest topology for which all sets in $\mathscr{A}$ is open.\\
+    (c) $(\implies)$ Assume $f$ is continuous. By definition every $U$ is open so its preimage is open.\\
+    $(\impliedby)$ Assume $f^{-1}(U)$ is open in $Y$ for every $U\in \mathscr{A}$.
+    Every open set in $X$ is an arbitrary union of finite intersections. Since $f^{-1}(U)$ is open,
+    arbitrary unions of finite intersections of $f^{-1}(U)$s is also open. Thus every open set in
+    $X$, the preimage is also open.
+    \qed
+\end{s}
+
+\begin{p}{13}
+    Let $X$ be a totally ordered set. Give $X$ the order topology, which is the topology generated
+    by the subbasis consisting of all sets of the following forms for $a\in X$:
+    $$(a,\infty)=\{x\in X : x > a\},$$
+    $$(-\infty,a)=\{x\in X : x < a\}$$
+    (a) Show that each set of the form $(a,b)$ is open in $X$ and each set of the form
+    $[a,b]$ is closed.\\
+    (b) Show that $X$ is Hausdorff.\\
+    (c) For any pair of points $a,b \in X$ with $a<b$, show that $\overline{(a,b)} \subseteq [a,b]$.\\
+    (d) Show that the order topology on $\mathbb{R}$ is the same as the Euclidian topology.
+\end{p}
+\begin{s}{13}
+    (a) Let $(a,b)$ be an arbitrary "open" interval in $X$. It can be formed by taking the intersections
+    $(a,\infty) \cap (-\infty,b)$. $[a,b]$ is closed since it can be formed by
+    $X \setminus ((-\infty,a) \cup (b,\infty))$, the latter part of which is open, so the set difference
+    is closed.\\
+    (b) Let $a\in X$. From the subbasis we can form open set: $(a,a)$, i.e. the singleton set
+    containing just $a$ because it is the intersection of $(-\infty,a)$ and $(a,\infty)$.
+    Thus $X$ is Hausdorff.\\
+    (c) $[a,b]$ is closed from part (a), and it contains $(a,b)$ so the closure of $(a,b)$ is
+    contained in $[a,b]$.\\
+    (d) TODO!
+\end{s}
+
+\begin{p}{14}
+    Prove Lemma 2.48 (Sequence lemma).\\
+    Suppose $X$ is a first countable space, $A$ is any subset of $X$, and $x$ is any point of $X$.\\
+    (a) $x \in \overline{A}$ if and only if $x$ is a limit of a sequence of points in $A$.\\
+    (b) $x \in \text{Int }A$ if and only if every sequence in $X$ converging to $x$ is eventually
+    in $A$.\\
+    (c) $A$ is closed in $X$ if and only if $A$ contains every limit of every convergent sequence
+    of point in $A$.\\
+    (d) $A$ is open in $X$ if and only if every sequence in $X$ converging to
+    a point of $A$ is eventually in $A$.
+\end{p}
+\begin{s}{14}
+    (a) $(\implies)$ Assume $x\in \overline{A}$. If $x\in A$, then the constant sequence of $x$ itself
+    is a sequence of points in $A$ that converges to $x$. If not, then $x$ has to be a limit
+    point of $A$. By definition of a limit point of $A$, for all open neighborhoods $V_x$ of $x$,
+    there exists a point $p \in A$ such that $p\in V_x$. Because the space is first countable,
+    this applies to a countable nested-neighborhood of $x$. So we can take each $x$ in our nested
+    progression as our sequence.\\
+    $(\impliedby)$ Assume $x$ is a limit of a sequence of points in $A$. By definition of a limit
+    of a sequence, there exists $(x_i)_{i=1}^{\infty}$ such that for all open neighborhoods
+    $V_x$ of $x$, there exists some $N$ such that if $i\ge N$, then $x_i \in V_x$. So either
+    $x\in A$ for all open neighborhoods of $x$, there exists some point of $A$ contained in
+    that neighborhood, which is the definition of a limit point.\\
+    (b) $(\implies)$ Assume $x\in \text{Int }A$. Let $(x_i)_{i=1}^{\infty}$ be a sequence 
+    that converges to $x$. Since the interior is open, there exists some neighborhood 
+    $V_x$ of $x$ that is contained in $\text{Int }A$. 
+    Since $(x_i)_{i=1}^{\infty}$ converges to $x$, there exists some $N$ such that 
+    if $i \ge N$, then $x_i \in V_x$. Thus the sequence is eventually in $A$ since $A$ contains
+    its interior.\\
+    $(\impliedby)$ Similary, if every sequence converging to $x$ is eventually in $A$, then 
+    there exists an open neighborhood of $x$ that is contained in $A$, thus the interior being the
+    largest open set contained in $A$ also contains such a neighborhood.\\
+    (c) If $A$ is closed then $A = \overline{A}$ so then part (a) applies. Conversely, if part 
+    (a) applies then all points in $A$ is also in $\overline{A}$ so $A=\overline{A}$ so $A$ is closed.\\
+    (d) Same proof as part (c)
+    \qed
+\end{s}
+
+\begin{p}{15}
+    Let $X$ and $Y$ be topological spaces.
+    (a) Suppose $f: X \to Y$ is continuous and $p_n \to p$ in $X$. 
+    Show that $f(p_n) \to f(p)$ in $Y$.\\
+    (b) Prove that if $X$ is first countable, the converse is true:
+    if $f: X\to Y$ is a map such that $p_n \to p$ in $X$ implies $f(p_n) \to f(p)$ in $Y$,
+    then $f$ is continuous.
+\end{p}
+\begin{s}{15}
+    (a) Let $V_p$ be an arbitrary open neighborhood of $f(p)$. Then $f^{-1}(V_p)$ is
+    an open neighborhood of $p$. Since $p_n \to p$, there exists some $N$ such that if
+    $i \ge N$, $p_i \in f^{-1}(V_p)$, thus $f(p_i) \in V_p$.\\
+    (b) Assume $X$ is first countable and that 
+    $f: X\to Y$ is a map such that $p_n \to p$ in $X$ implies $f(p_n) \to f(p)$ in $Y$.
+    Let $V \subseteq Y$ be open. Want to show $f^{-1}(V)$ is open.
+    Let $p\in f^{-1}(V)$ and let $p_n \to p$ be an arbitrary sequence in $X$ converging to $p$.
+    By assumption, $f(p_n) \to f(p)$ in $Y$. Since $V$ is open, $f(p_n)$ is eventually in $V$.
+    This means that $p_n$ is eventually in $f^{-1}(V)$ which implies $f^{-1}(V)$ is open.
+    Thus $f$ is continuous. 
+    \qed
+\end{s}
+
+\begin{p}{16}
+    Let $X$ be a second countable topological space. Show that every collection of disjoint
+    open subsets of $X$ is countable.
+\end{p}
+\begin{s}{16}
+    A collection of disjoint open subsets are contained in some basis. Since the basis must 
+    be countable, the collection of disjoint open subets must also be countable.
+\end{s}
+
+\begin{p}{17}
+    Let $\mathbb{Z}$ be the set of integers. Say that a subset $U \subseteq \mathbb{Z}$
+    is symmetric if it satisfies the following condition:
+    $$\text{for each n}\in \mathbb{Z}, n\in U \text{ if and only if } -n \in U$$
+    Define a topology on $\mathbb{Z}$ by declaring a subset open if and only if it is symmetric.\\
+    (a) Show that this is a topology.\\
+    (b) Show that it is second countable.\\
+    (c) Let $A$ be the subet $\{-1,0,1,2\} \subseteq \mathbb{Z}$, and determine the interior,
+    boundary, closure, and limit points of $A$.\\
+    (d) Is $A$ open in $\mathbb{Z}$? Is it closed?
+\end{p}
+\begin{s}{17}
+    (a) $\emptyset$ is trivially open. $\mathbb{Z}$ is open since it contains all its negations.
+    Let $U,V$ be open. Then $U \cap V$ must also be open since if $n \in U \cap V$ then $n \in U$
+    and $n \in V$ which means $-n \in U$ and $-n \in V$. Arbitrary unions of open sets 
+    is also open since if $n$ is contained in the union, then it must be contained in one 
+    of the compenent sets, which mean $-n$ is also contained in that set which means $-n$ is
+    contained in the union.\\
+    (b) $\{\{i,-i\} : i \in \mathbb{N}\}$ forms a basis and is countable by construction.\\
+    (c) The interior is the largest open set contained in it so 
+    $\text{Int }A=\{-1,1,0\}$.\\
+    Boundary= ? \\
+    Closure = $\{-1,0,1,2,-2\}$\\
+    Limit points = $\{-1,0,1,2,-2\}$ ?\\
+    (d) A is neither open nor closed since it is equal to neither its interior or closure.
 \end{s}
 
 \begin{p}{}
