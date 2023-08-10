@@ -420,6 +420,99 @@
     (d) A is neither open nor closed since it is equal to neither its interior or closure.
 \end{s}
 
+\begin{p}{18}
+    (a) Show that $\mathbb{R}$ with the particular point topology is first countable
+    and separable but not second countable or Lindelof.\\
+    (b) Show that $\mathbb{R}$ with the excluded point topology is first countable and Lindelof,
+    but not second countable or separable.\\
+    (c) Show that $\mathbb{R}$ with the finite complement topology is separable and Lindelof
+    but not first or second countable.
+\end{p}
+\begin{s}{18}
+    (a) Any set containing $p$ is open. Thus, the smallest closed set containing $p$ is the whole space
+    itself, thus it is separable. For any given point $x\in \mathbb{R}$, $\{p,x\}$ forms a countable
+    neighborhood basis since every open neighborhood of $x$ contains it.\\
+    Since $\{p,x\}$ is open for every $x \in \mathbb{R}$, there are an uncountable number of 
+    disjoint open sets, which means it cannot be second countable. Similarly, $\{p,x\}$ is open for every $x \in \mathbb{R}$
+    is an open cover, but is not countable. Removing any element will make it not longer a cover, so 
+    the space is not lindelof.\\
+    (b) The excluded point topology is first countable since for $x \ne p$, the singleton containing 
+    just $x$ is a countable neighborhood basis. For the point $p$, the whole space is the only 
+    open neighborhood and so the whole space contains itself. Similarly, the only cover that 
+    this space has is the whole space itself, so a single subset is countable.\\
+    The number of singletons is uncountable so it cannot be second countable. Similarly, there are
+    an uncountable number of isolated points, so no closure of a countable subset can include
+    the whole space.\\
+    (c) The rationals form a countable dense subset because they are not closed because they are not finite.
+    So the smallest closed set containing the rationals must be the reals. The space is Lindelof 
+    because every open set must exclude just a finite number of elements. Thus every open cover 
+    can actually be reduced a finite subcover since we can just pick the open sets that include
+    the points missing from previous open sets, which by construction is finite.\\
+    The reasoning for why the space is not first or second countable is the same, which is because
+    there are an uncountable number of points to exclude. Each open set can only exclude a finite
+    number of points. One cannot get to an uncountable number from countable unions of finite sets.
+    \qed
+\end{s}
+
+\begin{p}{19}
+    Let $X$ be a topological space and let $\mathscr{U}$ be an open cover of $X$.\\
+    (a) Suppose we are given a basis for each $U \in \mathscr{U}$ (when considered as a
+    topological space in its own right). Show that the union of all those bases is a basis of $X$.\\
+    (b) Show that if $\mathscr{U}$ is countable and each $U\in \mathscr{U}$ is second countable, then 
+    $X$ is second countable.
+\end{p}
+\begin{s}{19}
+    (a) Open sets in an open subspace is also open in the parent space. As such all basis subsets
+    are open in the parent space as well. If an open set is fully contained in an element $U$ of 
+    the open cover, then it is a union of basis elements of $U$. If it isn't then it intersects
+    an element $U$ of the open cover, and since both are open, the intersection is open and is
+    contained in $U$, which can be built from the basis for $U$. Thus the union of the bases for all
+    $U$s is a basis for the whole space.\\
+    (b) A countable union of countable sets is countable.
+    \qed
+\end{s}
+
+\begin{p}{20}
+    Show that second countability, separability, and the Lindelof property are all equivalent
+    for metric spaces.
+\end{p}
+\begin{s}{20}
+    Second countable $\implies$ seperable: If a metric space is second countable, then it has a countable
+    basis of epsilon-balls. Pick the mid points of these balls. Then we have a countable set. 
+\end{s}
+
+\begin{p}{21}
+    Show that every locally Euclidean space is first countable.
+\end{p}
+\begin{s}{21}
+    Let $X$ be a locally Euclidean space. Then for every point $x \in X$, there exists an open
+    neighborhood $U_x$ of $x$ that is homeomorpic to $\mathbb{R}^n$. Since $\mathbb{R}^n$ is 
+    second countable, there exists a countable basis. Thus, there exists a countable neighborhood
+    basis for $x$. Since $x$ was arbitrary, $X$ is first countable.
+    \qed
+\end{s}
+
+\begin{p}{23}
+    Show that every manifold has a basis of coordinate balls.
+\end{p}
+\begin{s}{23}
+    Let $X$ be a manifold. Let $\mathscr{B}$ be a basis. Then for each $B \in \mathscr{B}$,
+    we have that each point $p\in B$ has an open neighborhood $U_p$ that is homeomorphic to an open
+    set in $\mathbb{R}^n$. Since $B$ is open, there exists some open neighborhood $V_p$ of $p$ such
+    that $V_p \subseteq B$. Then $U_p \cap V_p$ is open and contained in $U_p$ which means $U_p \cap V_p$
+    is homeomorphic to some open set in $\mathbb{R}^n$, which means some subset of it is homeomorphic
+    to some open ball in $\mathbb{R}^n$. Then union of all those open sets form a basis, each of which
+    homeomorphic to an open ball in $\mathbb{R}^n$.
+    \qed
+\end{s}
+
+\begin{p}{24}
+    Suppose $X$ is locally Euclidian of dimension $n$, and $f: X \to Y$ is a surjective
+    local homeomorphism. Show that $Y$ is also locally Euclidian of dimension $n$.
+\end{p}
+\begin{s}{24}
+    
+\end{s}
 \begin{p}{}
 \end{p}
 \begin{s}{}
