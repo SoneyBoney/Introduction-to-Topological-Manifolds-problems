@@ -1,0 +1,178 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%This is a science homework template. Modify the preamble to suit your needs. 
+%The junk text is   there for you to immediately see how the headers/footers look at first 
+%typesetting.
+
+
+\documentclass[12pt]{article}
+
+%AMS-TeX packages
+\usepackage{amssymb,amsmath,amsthm} 
+%geometry (sets margin) and other useful packages
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,ctable,booktabs,mathrsfs}
+
+
+%
+%Redefining sections as problems
+%
+\makeatletter
+\newenvironment{p}{\@startsection
+       {section}
+       {1}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent{P }
+       }
+       }
+\makeatother
+
+\makeatletter
+\newenvironment{s}{\@startsection
+       {subsection}
+       {2}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent\emph{(sol) }
+       }
+       }
+\makeatother
+
+%
+%Fancy-header package to modify header/page numbering 
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep} %these change header-rule width
+%\addtolength{\headwidth}{\marginparwidth}
+\chead{} 
+\rhead{\thepage} 
+\cfoot{} 
+\renewcommand{\headrulewidth}{.3pt} 
+\renewcommand{\footrulewidth}{.3pt}
+\setlength\voffset{-0.25in}
+\setlength\textheight{648pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%Contents of problem set
+%    
+\begin{document}
+
+\title{Chapter 3 Exercises}
+\author{Campinghedgehog}
+\date{August 26, 2023}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{p}{Exercise 3.12}
+    (c) If $(p_i)$ is a sequence of points in $S$ and $p\in S$, then $p_i \to p$ in $S$ if and only if
+    $p_i \to p$ in $X$.\\
+    (d) Every subspace of a Hausdorff space is Hausdorff.\\
+    (e) Every subspace of a first countable space is first countable.\\
+    (f) Every subspace of a second countable space is second countable.
+\end{p}
+\begin{s}{Exercise 3.12}
+    (c) Assume $p_i \to p$ in $S$. Since for all open neighborhoods $V_p$ in $S$, there exists $U_p$ in $X$ such
+    that $V_p \subseteq U_p$, $p_i \to p$ in $X$ as well.\\
+    Assume $p_i \to p$ in $X$. Since it is a sequence of points in $S$, by definition, for each open set intersect
+    $S$, blah blah blah, $p_i \to p$ in $S$ as well.\\
+    (d) Let $X$ be Hausdorff. Let $S$ be a subspace. Let $x,y \in S$. Then there exists
+    $U_x$ an $U_y$ open sets of $X$ such that they are disjoint. Since they are disjoint, intersecting them 
+    with $S$ still leaves them disjoint.\\
+    (d) Every point has a neighborhood basis in $X$; taking the intersection of that neighborhood with $S$, 
+    each basis element intersected with $S$ is open in $S$ and by definition is a basis for that neighborhood.\\
+    (e) By part by, the basis for the subspace is the collection of basis elements intersected with $S$, which 
+    is countable since the original basis is countable.
+\end{s}
+
+
+\begin{p}{Exercise 3.13}
+       Let $X$ be a topological space and let $S$ be a subspace of $X$.
+       Show that the inclusion map $S \hookrightarrow X$ is a topological embedding.
+\end{p}
+\begin{s}{Exercise 3.13}
+       Restricting the co-domain to just $S$ yields the bijective identity, which is a homeomorphism.
+\end{s}
+
+\begin{p}{Exercise 3.14}
+       Give an example of a topological embedding that is neither an open map nor a closed map.
+\end{p}
+\begin{s}{Exercise 3.14}
+       The inclusion map is a topological embedding. So for any topological space $X$, choose a subset
+       that is neither closed nor open, and thus the inclusion map from such a subset to $X$ is neither
+       open nor closed.
+\end{s}
+
+
+\begin{p}{Exercise 3.15}
+       A surjective topological embedding is a homeomorphism.
+\end{p}
+\begin{s}{Exercise 3.15}
+       The restriction of a surjective topological embedding is the whole co-domain itself, thus the whole
+       map is both injective and surjective so it's bijective and thus a homeomorphism with respect to
+       the whole co-domain.
+\end{s}
+
+
+
+
+\begin{p}{Exercise 3.25}
+    $$\mathscr{B}=\{U_1 \times \dots \times U_n : U_i \text{ is an open subset of } X_i,\, i=1,\dots ,n \}$$
+    Prove that $\mathscr{B}$ is a basis for a topology.
+\end{p}
+\begin{s}{Exercise 3.25}
+    Let $\mathscr{T}$ be the topology as follows: a subset of $X_1 \times \dots \times X_n$ is open if and 
+    only if the projections into $X_1, \dots , X_n$ are open. \\
+    By definition, each set in $\mathscr{B}$ is open. Let $U,V$ be arbitrary open subsets of the product space.
+    Then it's components $U_i$s and $V_i$s are all open in $X_i$. Then $U_i \cap V_i$ is open in $X_i$.
+    Then 
+    $$U_1 \cap V_1 \times \dots \times U_n \cap V_n$$ 
+    is open in the product space and is contained in 
+    $$(U_1 \times ... \times U_n) \cap (V_1 \times ... \times V_n)$$
+    Thus $\mathscr{B}$ is a basis for $\mathscr{T}$.
+    \qed
+\end{s}
+
+
+\begin{p}{3.29}
+    Prove the preceding corollary using only the characteristic property of the product topology.\\
+    If $X_1,...,X_n$ are topological spaces, each canonical projection
+    $\pi_i : X_1 \times \dots \times X_n \to X_i$ is continuous.
+\end{p}
+\begin{s}{3.29}
+    Let $Y=X_1,...,X_n$ and let $f$ be the identity map. Since the identity is always continuous, 
+    each $f_i = \pi_i \circ f$ is also continuous. And since $f$ is identity, $f_i = \pi_i$. So
+    the result follows.
+    \qed
+\end{s}
+
+
+
+\begin{p}{3.32}
+    Prove proposition 3.31:\\
+    Let $X_1,...,X_n$ be topological spaces.\\
+    (a) The product topology is "associative" in the sense that the three topologies on the set  
+    $X_1\times X_3 \times X_3$, obtained by thinking of it as 
+    $X_1\times X_3 \times X_3$ or $(X_1\times X_3) \times X_3$ or $X_1\times (X_3 \times X_3)$
+    are equal.
+\end{p}
+\begin{s}{3.32}
+    (a) Let $f((x_1,x_2),x_3) = (x_1,x_2,x_3)$. Bijection is clear. Now just need to prove continuity 
+    of $f$ and $f^{-1}$.
+\end{s}
+
+
+\begin{p}{}
+\end{p}
+\begin{s}{}
+\end{s}
+
+\end{document}
