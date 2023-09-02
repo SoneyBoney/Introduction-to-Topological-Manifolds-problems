@@ -162,11 +162,194 @@
     (a) The product topology is "associative" in the sense that the three topologies on the set  
     $X_1\times X_3 \times X_3$, obtained by thinking of it as 
     $X_1\times X_3 \times X_3$ or $(X_1\times X_3) \times X_3$ or $X_1\times (X_3 \times X_3)$
-    are equal.
+    are equal.\\
+    (b) For any $i\in \{1,...,n\}$ and any points $x_j \in X_j$, $j \ne i$, the map 
+    $X_i \to X_1 \times \dots \times X_n$ given by 
+    $$f(x) = (x_1,\dots,x_{i-1},x,x_{i+1},\dots,x_n)$$
+    is a topological embedding of $X_i$ into the product space.\\
+    (c) Each canonical projection $\pi_i: X_1 \times \dots \times X_n \to X_i$ is an open map.\\
+    (d) If for each $i$, $\mathscr{B}_i$ is a basis for the topology of $X_i$, then the set
+    $$\{B_1 \times \dots \times B_n : B_i \in \mathscr{B}_i\}$$
+    is abasis for the product topology.\\
+    (e) If $S_i$ is a subspace of $X_i$ for $i=1,\dots ,n$, then the product topology and the subspace topology
+    on $S_1 \times \dots \times S_n \subseteq X_1 \times \dots \times X_n$ are equal.\\
+    (f) If each $X_i$ is Hausdorff, so is $X_1 \times \dots \times X_n$.\\
+    (g) If each $X_i$ is first countable, so is $X_1 \times \dots \times X_n$.\\
+    (h) If each $X_i$ is second countable, so is $X_1 \times \dots \times X_n$.
 \end{p}
 \begin{s}{3.32}
     (a) Let $f((x_1,x_2),x_3) = (x_1,x_2,x_3)$. Bijection is clear. Now just need to prove continuity 
-    of $f$ and $f^{-1}$.
+    of $f$ and $f^{-1}$. Let $Y= (x_1,x_2),x_3)$ in the characteristic property. Then 
+    $f_1 = \pi_1 \circ {\pi_1}_{(X_1 \times X_2)}$, $f_2 = \pi_1 \circ {\pi_2}_{(X_1 \times X_2)}$,
+    $f_3 = id \circ  {\pi_2}_{(X_1 \times X_2)}$. Bascially a composition of projections.
+    All $f_i$s are continuous because all canonical projects are are continuous and compositions of 
+    continuous functions are continuous. Since all $f_i$ are continuous, $f$ is also continuous.
+    The continuity of $f^{-1}$ can be proved similarly.\\
+    (b) $f$ is continuous because for every open set in the product space, in particular $f^{-1}(U_i)$
+    must be open by definition. $f^{-1}$ is continuous because it is the canonical projection.\\
+    (c) Same reason as why $f$ is continuous as in (b)\\
+    (d) (d) By definition the topology on the product space is the topology for which 
+    $$\{U_1\times \dots \times U_n : U_i \text{ is open in } X_i\}$$
+    is a basis. Since each $\mathscr{B}_i$ is a basis, each $U_i$ is a union of some family of 
+    $B_i$s from $\mathscr{B}_i$. The result follows.\\
+    (e) Open-ness is defined on the product space by conjuction (ands) and subspace topology is the intersection
+    of open sets with a subset -- and since intersection boils down to conjuction of set elements -- and since 
+    conjuction is associative and commutative, the result follows. In order words, conjuctions of intersections 
+    is equal to intersections of conjunctions (of open sets).\\
+    (f) Let $(x_1,\dots,x_n)$ and $(y_1,\dots,y_n)$ be two distinct points of the product space. By assumption,
+    for all $i$, there exists $U_i$ and $V_i$ open neighborhoods of $x_i$ and $y_i$ respectively, such that
+    $U_i \cap V_i$ is empty. Since all $U_i$ and $V_i$ are open, $U_i \times \dots \times U_n$ and 
+    $V_i \times \dots \times V_n$  are open subsets of the product space. Moreover they are disjoint since each 
+    component in the cartesian product is disjoint.\\
+    (g) If each point in $X_i$ has a countable neighborhood basis, the cartesian product is also a neighborhood
+    basis by definition of product topology, but it must also be countable because a k-cell of countable sets must
+    also be countable from elementary set theory.\\
+    (h) Countability is preserved for same reason as in (g)
+\end{s}
+
+
+\begin{p}{3.34}
+    Suppose $f_1,f_2: X \to \mathbb{R}$ are continuous functions. Their pointwise sum 
+    $f_1 + f_2: X \to \mathbb{R}$ and pointwise product $f_1f_2: X \to \mathbb{R}$ are real-valued functions 
+    defined by
+    $$(f_1+f_2)(x) = f_1(x) + f_2(x), \qquad (f_1f_2)(x)=f_1(x)f_2(x)$$
+    Use the characteristic property of the product topology to show that pointwise sum and products of continuous
+    functions are continuous.
+\end{p}
+\begin{s}{3.34}
+    Using the characteristic property, since $f_1,f_2$ are both continuous, then the mapping 
+    $f: X \to \mathbb{R} \times \mathbb{R}$ is also continuous. Since multiplication and addition are both 
+    continuous, i.e. $m,a: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$, the composition of $f$ and mult 
+    or add is also continuous.
+    \qed
+\end{s}
+
+
+\begin{p}{3.38}
+    (Characteristic property of Infinite product spaces)\\
+    Let $(X_\alpha)_{\alpha\in A}$ be an indexed family of topological spaces. For any topological space $Y$,
+    a map $f: Y \to \prod_{\alpha\in A}X_\alpha$ is continuous if and only if each of its component functions
+    $f_\alpha=\pi_\alpha \circ f$ is continuous. The product topology is the unique topology on
+    $\prod_{\alpha\in A}X_\alpha$  that satisfies this property.
+\end{p}
+\begin{s}{3.38}
+    The product topology is the only topology to satisfy this property because of the finite intersection
+    of open sets are open property of topologies. The preimages of infinite spaces in the product space 
+\end{s}
+
+
+\begin{p}{3.40}
+    Show that the disjoint union topology is indeed a topology.
+\end{p}
+\begin{s}{3.40}
+    The whole disjoint space is open since the intersection with each $X_\alpha$ is equal to $X_\alpha$ which
+    is open since $X_\alpha$ is a topological space. As is the empty set for the same reason. 
+    Let $U,V$ be open sets in the disjoint union space. Then $U \cap V$ is open since 
+    $(X_\alpha \cap U) \cap (X_\alpha \cap V) = X_\alpha \cap (U \cap V)$. Openness of finite intersections
+    follows from induction. An arbitrary union of open sets in the product space is also open since
+    The $X_\alpha$ are all disjoint so each $X_\alpha \cap U$ will be open and an arbitrary union of those 
+    is open.
+    \qed
+\end{s}
+
+
+\begin{p}{3.43}
+    Let $(X_\alpha)_{\alpha\in A}$ be an indexed family of topological spaces.\\
+    (a) A subset of $\coprod_{\alpha \in A}X_\alpha$ is closed if and only if its intersection with each
+    $X_\alpha$ is closed.\\
+    (b) Each canonical injection $\iota_\alpha : X_\alpha \to \coprod_{\alpha \in A}X_\alpha$ is
+    a topological embedding and an open and closed map.\\
+    (c) If each $X_\alpha$ is Hausdorff, then so is $\coprod_{\alpha \in A}X_\alpha$.\\
+    (d) If each $X_\alpha$ is first countable, then so is $\coprod_{\alpha \in A}X_\alpha$.\\
+    (e) If each $X_\alpha$ is second countable and the index set $A$ is countable, then 
+    $\coprod_{\alpha \in A}X_\alpha$ is second countable.
+\end{p}
+\begin{s}{3.43}
+    (a) Assume that a subset $C$ in the disjoint union space is closed. Then 
+    $\coprod_{\alpha \in A}X_\alpha \setminus C$ is open which mean that
+    $X_\alpha \cap (\coprod_{\alpha \in A}X_\alpha \setminus C)$ is open in $X_\alpha$.
+    Which is equal to $X_\alpha \cap (\coprod_{\alpha \in A}X_\alpha \cap C^\mathsf{c})$
+    = 
+    $(X_\alpha \setminus C) \cap \coprod_{\alpha \in A}X_\alpha$ being open 
+    in $X_\alpha$. Which implies $C$ is closed in $X_\alpha$.\\
+    Let $C$ be such that each intersection with each $X_\alpha$ is closed.
+    Then $X_\alpha \setminus C$ is open. And the result follows similarly as above but in reverse.\\
+    (b) Since the second element of the pair is all the same if we restrict the  co-domain to the image,
+    we bascially get the identity map which is a homeomorphism and is both open and closed.\\
+    (c) Let each $X_\alpha$ be Hausdorff. Let $x,y$ be distinct points in the disjoint union space.
+    All $X_\alpha$s are disjoint by definition so there are just two cases:\\
+    1) $x,y$ are in the same $X_\alpha$. Then since $X_\alpha$ is Hausdorff, there exists disjoint open 
+    neighborhoods of $x$ and $y$ respectively.\\
+    2) If $x,y$ are not in the same $X_\alpha$, then their respective
+    $X_\alpha$ is the open neighborhoods that are by definition disjoint.\\
+    (d) Let $x$ be any point of the disjoint union space. Then by definition it must be a point in exactly
+    one $X_\alpha$. Since $X_\alpha$ is first countable, there exists a countable neighborhood basis of 
+    $x$ in $X_\alpha$. By definition of disjoint union topology, that neighborhood basis in $X_\alpha$ 
+    is also a neighborhood basis in the disjoint union topology/space, so the disjoint union space is 
+    also first countable.\\
+    (e) This follows since if $A$ is countable then we get a countable union of countable sets which is 
+    itself countable.
+    \qed
+\end{s}
+
+
+\begin{p}{3.44}
+    Suppose $(X_\alpha)_{\alpha\in A}X_\alpha$ is an indexed family of nonempty $n$-manifolds. 
+    Show that the disjoint union $\coprod_{\alpha \in A}X_\alpha$ is an $n$-manifold if and only if 
+    $A$ is countable. 
+\end{p}
+\begin{s}{3.44}
+    Hausdorffness and second-Countability follow from Proposition 3.42. Only need to show local euclidean. 
+    For each $x$, it will fall into exactly one $X_\alpha$ which is locally euclidian and thus so is 
+    the disjoint union space since the inclusion map is a topological embedding and is open and closed 
+    mapping.
+    \qed
+\end{s}
+
+\begin{p}{3.45}
+    Let $X$ be any space and $Y$ be a discrete space. Show that the Cartesian product $X\times Y$ is equal
+    to the disjoint union $\coprod_{y \in Y} X_y$, and the product topology is the sameas the disjoint union
+    topology.
+\end{p}
+\begin{s}{3.45}
+    It is clear that they have the same elements.\\
+    Since $Y$ is a discrete space, every subset of $Y$ is open. In particular the set of singletons in $Y$
+    form a basis for $Y$. Then $\{U, {y}\}$ where $U$ is open in $X$ and $y\in Y$ forms a basis for 
+    the product space. But then in the disjoint union space a set is open if the restriction is open, which
+    boils down to $|Y|$ copies of $X$s indexed by $y$, which is exactly the basis above. Thus they have
+    the same topologies.
+    \qed
+\end{s}
+
+\begin{p}{3.46}
+    Show that the quotient topology is indeed a topology.
+\end{p}
+\begin{s}{3.46}
+    Empty set is open trivialy. The whole $Y$ is open by surjection. And the fact that
+    intersection and union pass through preimages imply that the quotient topology is a topology.
+    \qed
+\end{s}
+
+
+\begin{p}{3.55}
+    Show that every wedge sum of Hausdorff spaces is Hausdorff.
+\end{p}
+\begin{s}{3.55}
+    There are two cases. The case where neither distinct point is the collapsed base point, and the case where 
+    one is.\\
+    Case 1) If neither distinct points is the collapsed point, then Hausdorffness follows from Hausdorffness 
+    of disjoint union space.\\
+    Case 2) Let $x$ be the collapsed base point and $y$ be any other point. The preimage of $x$ will then be
+    $\{p_\alpha\}_{\alpha\in A}$. Then for each of these $p_\alpha$, since they come from Hausdorff spaces,
+    there exists an open neighborhood that is disjoint from the open neighborhood of $y$. Then the union of 
+    all the open neighborhoods of all the $p_\alpha$ is itself open, which means that image of the quotient 
+    map of such a set is also open in the quotient space and is disjoint from the open neighborhood of $y$.
+    \qed
+\end{s}
+
+\begin{p}{}
+\end{p}
+\begin{s}{}
 \end{s}
 
 
