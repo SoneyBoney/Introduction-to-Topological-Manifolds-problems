@@ -72,6 +72,130 @@
 
 \thispagestyle{empty}
 
+\begin{p}{3.1}
+    Suppose $M$ is an $n$-dimensional manifold with boundary. 
+    Show that $\partial M$ is an $(n-1)$-manifold (without boundary) when endowed with the subspace topology.
+    You may use without proof the fact that $Int$ M and $\partial M$ are disjoint.
+\end{p}
+\begin{s}{3.1}
+    Hausdorffness and second countability from the subspace topology is inherited from the topology on $M$.
+    To prove that the boundary of $M$ is locally euclidean of dimension $(n-1)$, we use the assumption that 
+    $M$ is a manifold with boundary, this means that for all points $p\in M$, there exists an open neighborhood
+    $U$ that is homeomorphic to $\mathbb{H}^n$. If $p$ is in the boundary, then given that the interior and boundary
+    of $M$ are disjoint, we have that $U \cap \partial M$ is homeomorphic to $\mathbb{R}^(n-1) \times {0}$, which
+    admits an embedding from $\mathbb{R}^(n-1)$. Thus an point on the boundary of $M$ is locally euclidean of 
+    dimension $n-1$.
+\end{s}
+
+\begin{p}{3.2}
+    Suppose $X$ is a topological space and $A\subseteq B \subseteq X$ Show that $A$ is dense in $X$ if and only if
+    $A$ is dense in $B$ and $B$ is dense in $X$.
+\end{p}
+\begin{s}{3.2}
+    Assume that $A$ is dense in $X$, i.e. $\overline A = X$. From exercise 3.7 we have that the closure of $A$ in
+    $B$ is equal to the closure of $A$ in $X$ intersected with $B$, and since $\overline A = X$, the closure of $A$
+    in $B$ is equal to $B$. The closure of $B$ in $X$ contains the closure of $A$, i.e. 
+    $\overline A = X \subseteq \overline B$, since $B$ is a subset we have that $\overline B = X$.\\
+    Conversely, assume that $A$ is dense in $B$ and $B$ is dense in $X$. $\overline B$ is the smallest closed
+    set that contains $B$, any closed set that contains $B$ must contain $\overline B$. By assumption we have
+    that the closure of $A$ in $B$ is equal to $B$. So $\overline A$ in $X$ is a closed set in $X$ that contains $B$.
+    Thus $\overline A$ will contain $\overline B = X$. Thus $A$ is dense in $X$.
+    \qed
+\end{s}
+
+\begin{p}{3.3}
+    Show by giving a counterexample that the conclusion of the gluing lemma (Lemma 3.23) need not hold if 
+    $\{A_i\}$ is an infinite closed cover.
+\end{p}
+\begin{s}{3.3}
+    Let $A_i = [\frac{1}{i}, i]$, then the last part of the proof of the gluing lemma does not hold because taking
+    the union of these, and using de morgans laws, we see that the unions of $A_i$ for $i \in \mathbb{N}$
+    is not closed.
+    \qed
+\end{s}
+
+
+\begin{p}{3.4}
+    Show that every closed ball in $\mathbb{R}^n$ is an $n$-dimensional manifold with boundary, as the complement
+    of every open ball. Assuming the theorem on the invariance of the boundary, show that the manifold boundary of 
+    each is equal to its topological boundary as a subset of $\mathbb{R}^n$, namely a sphere.
+    [Hint: for the unit ball in 
+    $\mathbb{R}^n$, consider the map $\pi \circ \sigma^{-1}: \mathbb{R}^n \to \mathbb{R}^n$], where $\sigma$
+    is the stereographic projection and $\pi$ is a projection from $\mathbf{R}^{n+1}$ to $\mathbb{R}^n$
+    that omits some coordinate other than the last.
+\end{p}
+\begin{s}{3.4}
+    Let $B$ be a closed ball in $\mathbb{R}^n$. For points in the interior of $B$, the inclusion map into 
+    $\mathbb{R}^n$ is a chart. For points on the boundary, the idea is to use the inverse of the stereographic
+    projection to lift the boundary onto the surface, then project it back down by throwing away the last 
+    Skip for now.
+\end{s}
+
+\begin{p}{3.5}
+    Show that a finite product of open maps is open;
+    give a counterexample to show that a finite product of closed maps need not be closed.
+\end{p}
+\begin{s}{3.5}
+    The product of open maps is open, and also each $f(U)$ is open, so the product of them are also open.
+    Two copies of $f(x)=max(x,0)$ is a counterexample. The mapping is closed because it's a union of 
+    the preimage and $\{0\}$. But the product of two of these maps, the set $\{xy | xy = -1\}$ has an image that 
+    is not closed.
+    \qed
+\end{s}
+
+\begin{p}{3.6}
+    Let $X$ be a topological space. The diagonal of $X \times X$ is the subset
+    $\Delta = \{(x,x): x \in X\} \subseteq X \times X$. Show that $X$ is Hausdorff if and only if 
+    $\Delta$ is closed in $X \times X$.
+\end{p}
+\begin{s}{3.6}
+    Assume that $X$ is Hausdorff. We want to show that $\Delta^\complement = (X \times X) \setminus \Delta$ is open.
+    We will do this by showing that every point in $\Delta^\complement$ has an open neighborhood contained in
+    $\Delta^\complement$. Let $(p,q) \in \Delta^\complement$, then $p \ne q$. Since $X$ is Hausdorff, there 
+    exists respective open neighborhoods $U,V$ of $p,q$ such that $U \cap V = \emptyset$. Since both $U,V$ are open
+    their cartesian product is open in the product space, and is contained in $\Delta^\complement$ since they are 
+    disjoint. Therefore $\Delta$ is closed. \\
+    The other direction is the exact reasoning just reversed.
+    \qed
+\end{s}
+
+\begin{p}{3.7}
+    Show that the space $X$ of Problem $2-22$ is homeomorphic to $\mathbb{R}_d \times \mathbb{R}$ where 
+    $\mathbb{R}_d$ is the set $\mathbb{R}$ with the discrete topology.
+\end{p}
+\begin{s}{3.7}
+    We can show that the component spaces are homeomorphic. By definition the first component of the space 
+    in problem 2-22 the element can be anything so it has the discrete topology. The second component is
+    $a \le y \le b$ which is the same as $x < b-a = \epsilon$ for some $\epsilon >0$ which is the same as
+    the euclidean topology.
+    \qed
+\end{s}
+
+\begin{p}{3.8}
+    Let $X$ denote the Cartesian product of countably infinite many copies of $\mathbb{R}$
+    (which is just the set of all infinite sequence of real numbers), endowed with the box topology. 
+    Define a map $f: \mathbb{R} \to X$ by $f(x)= (x,x,x,\dots)$.
+    Show that $f$ is not continuous, even though each of its component functions is.
+\end{p}
+\begin{s}{3.8}
+    Consider the cardinality of the bases of the domain and co-domain. We know $\mathbb{R}$ is second countable so
+    it has a countable basis. On the other hand, the infinite sequence of countable sets is not countable (which
+    can be shown by diagonalization argument). Since the codomain has strictly more open sets than the domain, 
+    the function cannot be continuous.
+    \qed
+\end{s}
+
+\begin{p}{3.9}
+    Let $X$ be as in the preceding problem. Let $X^+ \subseteq X$ be the subset consisting of the sequences 
+    of strictly positive real numbers, and let $z$ denote the zero sequence, that is, the one whose terms are 
+    $z_i = 0$ for all $i$. Show taht $z$ is in the closure of $X^+$, but there is no sequence of elements of
+    $X^+$ converging to $z$. Then use the sequence lemma to conclude that $X$ is not first countable, and thus
+    not metrizable.
+\end{p}
+\begin{s}{3.9}
+    TODO
+\end{s}
+
 \begin{p}{problem 3.10}
     Suppose that $(X_\alpha)_{\alpha \in A}$ is an indexed family of topological spaces, and $Y$ is an topological
     space. A map $f: \coprod_{\alpha \in A}X_\alpha \to Y$ is continuous if and only if its restriction to each 
@@ -85,6 +209,14 @@
     so any open set intersected with it is also open.\\
     The disjoint union topology is the unique topology with this property because...
 \end{s}
+
+
+\begin{p}{3.11}
+    
+\end{p}
+\begin{s}{3.11}
+\end{s}
+
 
 \begin{p}{}
 \end{p}

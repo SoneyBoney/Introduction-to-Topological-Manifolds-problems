@@ -347,10 +347,137 @@
     \qed
 \end{s}
 
+\begin{p}{3.59}
+    Let $q: X \to Y$ be any map. For a buset $U\subseteq X$, show that the following are equivalent.\\
+    (a) $U$ is saturated.\\
+    (b) $U = q^{-1}(q(U))$.\\
+    (c) $U$ is an union of fibers.\\
+    (d) If $x\in U$, then every point $x^\prime\in X$ such that $q(x)=q(x^\prime)$ is also in $U$.
+\end{p}
+\begin{s}{3.59}
+    $(a \implies b)$ Assume $U$ is saturated. Then there exists some $V \subseteq Y$ such that 
+    $q^{-1}(Y) = U$. This assumption rules out the case where the image of $U$ contains a point where more than 
+    one element of $X$ maps to, where one of those points is not in $U$ (where $q$ is not injective). The result
+    follows.\\
+    $(b \implies c)$ Assume $U = q^{-1}(q(U))$. This can be rewritten as 
+    $$U = \bigcup \{q^{-1}(y) : y \in q(U)\}$$
+    $(c \implies d)$ Assume $U$ is a union of fibers. Let $x \in U$. Let $x^\prime \in X$ be such that 
+    $q(x) = q(x^\prime)$. Since $U$ is a union of fibers, and since $q(x) = q(x^\prime)$, they map to the same
+    element in the image, which means they are in $U$.
+    $(d \implies a)$ Since by definition $U$ contains each fiber, there exists some subset in the co-domain that
+    has the pre-image as $U$.
+    \qed
+\end{s}
+
+
+\begin{p}{3.61}
+    A continuous surjective map $q: X \to Y$ is a quotient map if and only if it takes saturated open subsets to
+    open subsets, or saturated closed subsets to closed subsets.
+\end{p}
+\begin{s}{3.61}
+    If $q$ is a quotient map, then the target's open sets are the ones for which its preimage is open in the domain.
+    Let $U$ be a saturated open set in $X$. Then we have that $U=q^{-1}(q(U))$. Then $q(U)$ is open since $q$ is a 
+    quotient map. Therefore, $q$ takes saturated open sets to open sets.\\
+    If $q$ takes saturated open sets to open sets. Let $V \subseteq Y$. Need to show that $V$ is open if and only 
+    if $q^{-1}(V)$ is open. If $V$ is open, then $q^{-1}(V)$ is open by continuity of $q$. Assume that 
+    $q^{-1}(V)$ is open. By definition $q^{-1}(V)$ is a union of fibers, which means it is a saturated open set,
+    so $V$ is open.
+    \qed
+\end{s}
+
+
+
+\begin{p}{3.63}
+    (a) Any composition of quotient maps is a quotient map.\\
+    (b) An injective quotient map is a homeopmorphism.\\
+    (c) If $q: X \to Y$ is a quotient map, a subset $K \subseteq Y$ is closed if and only if $q^{-1}(K)$
+    is closed in $X$.\\
+    (d) If $q: X \to Y$ is a quotient map and $U \subseteq X$ is a saturated open or closed subset, then 
+    the restriction $\left.q\right|_U: U \to q(U)$ is a quotient map.\\
+    (e) If $\{q_\alpha : X_\alpha \to Y_\alpha\}_{\alpha \in A}$ is an indexed family of quotient maps, then 
+    the map $q: \coprod_\alpha X_\alpha \to \coprod_\alpha Y_\alpha$ whose restriction to each $X_\alpha$ 
+    is equal to $q_\alpha$ is a quotient map.
+\end{p}
+\begin{s}{3.63}
+    (a) Let $f: X \to Y$, $g: Y \to Z$ be quotient maps. Then the composition is surjective as well.
+    Composition of continuity shows that the $V$ open in $Z$ implies $(f\circ g)^{-1}(V)$ open in $X$.
+    Let $U$ be a saturated open set in $X$. Then $U= f^{-1}(g^{-1}(V))$ for some $V \subseteq Z$. Need to
+    show that $V$ is open. Then $f(U) = g^{-1}(V)$ and $f(U)$ is open and also a union of fibers, Therefore
+    $g(f(U)) = V$ is open in $Z$.\\
+    (b) A quotient map is already surjective. So a map that is both injective and surjective is bijective 
+    by the Cantor-Bernstein theorem. By definition it is continuous. By injective, all subsets are 
+    saturated, thus it is an open map, so it is a homeopmorphism.\\
+    (c) Let $K\subseteq Y$ be closed. Then $q^{-1}(K)$ is closed by continuity. 
+    Let $q^{-1}(K)$  be closed in $X$. Then by definition it is a saturated subset, and so it's image, $K$
+    is closed.\\
+    (d) The restriction is surjective by definition. It is also continuous by the local criterion for continuity.
+    Because $U$ is a saturated set, any subset of it is also saturated. Thus open subset of $U$ must also map
+    to an open set of $q(U)$, so $q$ is a quotient map.\\
+    (e) Let $V \subseteq \coprod_\alpha Y_\alpha$ be open. Then the intersection with each $Y_\alpha$ is open.
+    Then $q_\alpha^{-1}(V_\alpha)$ is open for all $\alpha$, thus $q^{-1}(V_\alpha)$ is open. The other way is similar
+    following from the fact that a saturated open subset's intersection with each subspace is also saturated.
+    \qed
+\end{s}
+
+
+\begin{p}{3.72}
+    (Uniqueness of the Quotient Topology)\\
+    Given a topological space $X$, a set $Y$, and a surjective map $q: X \to Y$, the quotient topology is the only 
+    topology on $Y$ for which the characteristic property holds.
+\end{p}
+\begin{s}{3.72}
+    Let $\tau_q,\tau_p$ be two topologies for which the property holds, where $\tau_q$ is the quotient topology.
+    Let $Z=Y_p$ and $f_q: Y_q \to Y_p$ be the identity map. Simlarly let $Z=Y_q$ and $f_p: Y_p \to Y_q$ be the 
+    identity. Then if both are continuous then the result follows. \\
+    $f_p \circ q_p: X \to Y_q$ is continuous (quotient map), and thus $f_p$ is continuous. \\
+    Let $q': X \to Y_p$, and $id: Y_d \to Y_d$. $id$ is clearly continuous. Thus using the characteristic property,
+    $q' = id \circ q'$ is continuous. But also $q' = f_p \circ q$, using the characteristic property again,
+    $f_p$ is continuous.
+    \qed
+\end{s}
+
+
+\begin{p}{3.83}
+    Verfiy each of the following to be a topological group:\\
+    (a) the real line $\mathbb{R}$ with its additive group structure and Euclidean topology \\
+    (b) the set $\mathbb{R} \setminus \{0\}$ of nonzero real numbers under multiplication, with the Euclidean topology\\
+    (c) the general linear group $GL(n,\mathbb{R})$, which is the set of $n \times n$ invertible real matrices
+    under matrix multiplication, with the subspace topology obtained from $\mathbb{R}^{n^2}$ (where we identify 
+    an $n\times n$ matrix with a point in $\mathbb{R}^{n^2}$ by using the matrix entries as coordinates)\\
+    (d) any group whatsoever with the discrete topology (any such group is called a discrete group)
+\end{p}
+\begin{s}{3.83}
+    (a) Addition is continuous by limit laws, negation is continuous as well. \\
+    (b) Same as part a\\
+    (c) idk\\
+    (d) by assumption it's a group. Continuity follows since any function from a discrete topology will be 
+    continuous.
+\end{s}
+
+
+\begin{p}{3.85}
+    Show that any subgroup of a topological group is a topological group with the subspace topology.
+    Any finite product of topological groups is a topological group with the direct product group
+    structure and the product topology.
+\end{p}
+\begin{s}{3.85}
+    Let $G$ be a topological group. Let $S \leq G$ be a subgroup. Then by definition $S$ is a group. Just need 
+    to show that negation and group operation are continuous. Since $S$ is a subset it inherits the subset topology.
+    For any open subset in the image $V \subseteq G$, $V \cap S$ is open in $S$. Then $m^{-1}(V) \cap S$ is open,
+    same as negation, so $S$ is a topological group.\\
+    Let $G_1, \dots , G_n$ be topological groups. Then $G_1 \times \dots \times G_n$ is a group with the 
+    direct product group operation. Also imbue the space in the product topology. Since $M$ is the group operation,
+    it can be written as $(m_1,\dots,m_n)(x)=(m_1(x),\dots,m_n(x))$, where each $m_i$ is continuous. By proposition
+    3.33, $M$ is continuous; same goes for negation. Thus the product space is a topological group.
+    \qed
+\end{s}
+
+
 \begin{p}{}
 \end{p}
 \begin{s}{}
 \end{s}
+
 
 
 \begin{p}{}
