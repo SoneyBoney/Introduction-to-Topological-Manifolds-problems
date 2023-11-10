@@ -10,6 +10,7 @@
 \usepackage{amssymb,amsmath,amsthm} 
 %geometry (sets margin) and other useful packages
 \usepackage[margin=1.25in]{geometry}
+\usepackage{tikz-cd}
 \usepackage{graphicx,ctable,booktabs,mathrsfs}
 
 
@@ -188,12 +189,19 @@
 \begin{p}{3.9}
     Let $X$ be as in the preceding problem. Let $X^+ \subseteq X$ be the subset consisting of the sequences 
     of strictly positive real numbers, and let $z$ denote the zero sequence, that is, the one whose terms are 
-    $z_i = 0$ for all $i$. Show taht $z$ is in the closure of $X^+$, but there is no sequence of elements of
+    $z_i = 0$ for all $i$. Show that $z$ is in the closure of $X^+$, but there is no sequence of elements of
     $X^+$ converging to $z$. Then use the sequence lemma to conclude that $X$ is not first countable, and thus
     not metrizable.
 \end{p}
 \begin{s}{3.9}
-    TODO
+    The zero sequence is in the closure because we can show that it is on the boundary. I.e. any open set that contains 
+    the zero sequence also contains some point of $X^+$. This is due to the archimedian property of the reals.
+    Any open interval containing $0$ will be have some positive epsilon, which we can fit an open interval of length less
+    than epsilon. \\
+    By definition a sequence is countable; and we also have an infinite countable number of copies of the reals from 
+    which to pick open sets that do not include the $n$th term of the $n$th sequence. Then by construction there 
+    does not exist an $N$ such that if $n \ge N$, $a_n \in V(z)$.
+    \qed
 \end{s}
 
 \begin{p}{problem 3.10}
@@ -207,16 +215,260 @@
     Assume that $f$ is continuous. Then the restriction to each $X_\alpha$ must also be continuous because
     each open set in $X_\alpha$ is also open in the disjoint union space since $X_\alpha$ is by definition open
     so any open set intersected with it is also open.\\
-    The disjoint union topology is the unique topology with this property because...
+    Let thehe identity map between
+    $\coprod_{\alpha \in A}X_\alpha$ and $\coprod_{\alpha \in A}X_\alpha$ with 2 topologies be $f$, assuming that $f$
+    has the the characteristic property, we have that the restrictions to $X_\alpha$ with the subspace topology is 
+    straightforwardly continuous. Thus $f$ is continuous and a homeomorphism.
+    \qed
 \end{s}
 
 
 \begin{p}{3.11}
-    
+    Proposition 3.62(d) showed that the restriction of a quotient map to a saturated open subset is a quotient map 
+    onto its image. Show that the "saturated" hypotehsis is necessary, by giving an example of a quotient map 
+    $f: X \to Y$ and an open subset $U \subseteq X$ such that $f|_U :U \to Y$ is surjective but not a quotient map.
 \end{p}
 \begin{s}{3.11}
+    TODO
 \end{s}
 
+
+\begin{p}{3.12}
+    Suppose $X$ is a topological space and $(X_\alpha)_{\alpha \in A}$ is an indexed family of topological spaces.\\
+    (a) For any subset $S \subseteq X$, show that the subspace topology on $S$ is the coursest topology for which
+    $\iota_S: S \hookrightarrow X$ is continuous.\\
+    (b) Show that the product topology is the coarsest topology on $\prod_{\alpha\in A}X_\alpha$ for which the 
+    canonical projection $\pi_\alpha: \prod_{\alpha\in A}X_\alpha \to X_\alpha$ is continuous.\\
+    (c) Show that the disjoint union topology is the finest topology on $\coprod_\alpha X_\alpha$ for which every
+    canonical injection $\iota_\alpha : X_\alpha \to \coprod_\alpha X_\alpha$ is continuous.\\
+    (d) Show that if $q: X \to Y$ is any surjective map, the quotient topology on $Y$ is the finest topology for which
+    $q$ is continuous.
+\end{p}
+\begin{s}{3.12}
+    (a) The least amount of open sets would need to be sets of $S$ for which the preimage of the inclusion map is open.
+    In this context, the preimage is just the intersection $X \cap S$ which is precisely the definition of the subspace 
+    topology.\\
+    (b) same reasoning as above\\
+    (c) inverse of the two above, if it were any finer, the original space $X_\alpha$ would not have enough open sets.\\
+    (d) Follows from the definition of the quotient topology. If $q(U)$ is open, then $U$ is as well, by definition of 
+    continuity, but also by definition of the quotient topology.
+    \qed
+\end{s}
+
+\begin{p}{3.13}
+    Suppose $X$ and $Y$ are topological spaces and $f: X \to Y$ is a continuous map. Prove the following:\\
+    (a) If $f$ admits a continuous left inverse, it is a topological embedding.\\
+    (b) If $f$ admits a continuous right inverse, it is a quotient map.\\
+    (c) Give examples of a topological embedding with no continuous left inverse, and a quotient map 
+    with no continuous right inverse.
+\end{p}
+\begin{s}{3.13}
+    (a) Since $f$ admits a continuous left inverse, we have that $f$ is an open mapping; and when restricting the co-domain
+    to the image, then we have a homeomorphism; thus $f$ is a topological embedding.\\
+    (b) Since $f$ admits a continuous right inverse, we have that $f$ is surjective, since 
+    $\forall y\in f(X), \exists x \in X \, s.t. \, x = f^{-1}(y)$, applying $f$, we have that 
+    $f(x) = y$ for all $y$ in the image. Thus we have that $f$ is an open and continuous mapping that is surjective, 
+    which is thus a quotient map.\\
+    (c) Any embedding such that the co-domain strictly subsumes the image will work. \\
+    The continuous function taking the the closed unit interval to the circle.
+    \qed
+\end{s}
+
+\begin{p}{3.14}
+    Show that the real projective space $\mathbb{P}^n$ is an $n$-manifold. [Hint: consider the subsets 
+    $U_i \subseteq \mathbb{R}^{n+1}$ where $x_i=1$.]
+\end{p}
+\begin{s}{3.14}
+    Following the hint, let $U_i = \{(x_1,\dots,x_{n+1}) \, | \, x_i \ne 0\}$. Then set of $U_i$ for $i=1,\dots,n+1$ is
+    an open cover for $\mathbb{R}^{n+1}$. Then the images $V_i=\pi(U_i)$ cover $\mathbb{P}^n$.
+    Then from each $V_i$, define a mapping $\phi_i: V_i \to \mathbb{R}^n$ by 
+    $$\phi_i([x_1,\dots,x_{n+1}])=(\frac{x_1}{x_i},\dots,\frac{x_{n+1}}{x_i})$$
+    Let ${\pi_i}= \pi_{|U_i}$ be the restriction of the canonical projection to $U_i$. Note that this is also a quotient
+    map since $U_i$ is open.
+    Note that the mapping $\psi_i: U_i \to \mathbb{R}^n$ defined by
+    $\psi_i((x_1,\dots,x_{n+1})) = (\frac{x_1}{x_i},\dots,\frac{x_{n+1}}{x_i})$
+    is continuous (similar to the construction of the stereographic projection). Also note that 
+    $\psi_i = \phi_i \circ \pi_i$. This implies $\phi_i: V_i \to \mathbb{R}^n$ is continuous.\\
+    From propostion 3.56, we have that $\mathbb{P}^n$ is second countable.\\
+    For Hausdorffness, let $p,q$ be distrinct points in $\mathbb{P}^n$. 
+    TODO
+\end{s}
+
+\begin{p}{3.15}
+    TODO
+\end{p}
+\begin{s}{3.15}
+\end{s}
+
+\begin{p}{3.16}
+    Let $X$ be the subset $(\mathbb{R}\times \{0\}) \cup (\mathbb{R}\times \{1\})$. Define an equivalence relation on 
+    $X$ by declaring $(x,0)\sim (x,1)$ if $x\ne 0$. Show that the quotient space $X/\sim$ is locally Euclidean and 
+    second countable, but not Hausdorff. (This space is called the line with two origins).
+\end{p}
+\begin{s}{3.16}
+    The subsets $\{(x,0)\}$ and $\{(x,1)\}$ are homeomorphic to $\mathbb{R}$, and also passes to the quotient, therefore 
+    the line with two origins is locally euclidean. By proposition 3.56, it is also second countable.\\
+    However, it is not Hausdorff because any two open sets containing the origins must overlap. This is because for any 
+    $\epsilon > 0$, $(\epsilon,0)\sim (\epsilon,1)$. 
+    \qed
+\end{s}
+
+\begin{p}{3.17}
+    This problem show that the conclusion of proposition 3.57 need not be true if the quotient map is not assumed to be 
+    open. Let $X$ be the following subset of $\mathbb{R}^2$:
+    $$X = ((0,1)\times (0,1))\cup \{(0,0)\} \cup \{(1,0)\}$$
+    For any $\epsilon \in (0,1)$, let $C_\epsilon$ and $D_\epsilon$ be the sets
+    $$C_\epsilon = \{(0,0)\} \cup ((0,\frac{1}{2})\times (0,\epsilon))$$
+    $$D_\epsilon = \{(1,0)\} \cup ((\frac{1}{2},1)\times (0,\epsilon))$$
+    Define a basis $\mathcal{B}$ for a topology on $X$ consisting of all open rectangles of the form
+    $(a_1,b_1)\times (a_2,b_2)$ with $0\le a_1 < b_1 \le 1$ and $0\le a_2 < b_2 \le 1$, together 
+    with all subsets of the form $C_\epsilon$ or $D_\epsilon$.\\
+    (a) Show that $\mathscr{B}$ is a basis for a topology on $X$.\\
+    (b) Show that this topology is Hausdorff.\\
+    (c) Show that the subset $A=\{(0,0)\} \cup ((0,\frac{1}{2}]\times (0,1))$ is closed in $X$.\\
+    (d) Let $\sim$ be the relation on $X$ generated by $a \sim a'$ for all $a,a' \in A$. Show that $\sim$ is closed 
+    in $X\times X$.\\
+    (e) Show that the quotient space $X/A$ obtained by collapsing $A$ to a point is not Hausdorff.
+\end{p}
+\begin{s}{3.17}
+    (a) It is clear that any point in $X$ is also in an element of the basis.
+    Let $B_1, B_2 \in \mathscr{B}$, and let $p\in X$ such that $p \in B_1 \cap B_2$. Want to show that 
+    $\exists B_3 \in \mathscr{B} \subseteq B_1 \cap B_2$ such that $p\in B_3$.
+    If both $B_1$ and $B_2$ are open rectangles, it is clear that their intersection is also an open rectangle.\\
+    WLOG assume that $B_1$ is an open rectangle. Then if $B_2$ is either a $C_\epsilon$ or $D_\epsilon$, then 
+    the intersection must also be an open rectangle with $x$ axis to be either lower or upper half.\\
+    If both are $C_\epsilon$s or $D_\epsilon$s, then the intersection will be $C_\epsilon$ or $D_\epsilon$ respectively
+    for some other epsilon (min). \\
+    Finally, assume $B_1=C_{\epsilon_1}$ and $B_2=D_{\epsilon_2}$. Then the intersection is empty. 
+    Thus $\mathscr{B}$ is a basis for some topology.\\
+    (b) Let $p,q \in X$ be distinct point of $X$. 
+    If $p$ is $(0,0)$ or $(1,0)$, and $q$ is not, then some open rectangle can be chosen that is disjoint from $D$ or $C$
+    since $\epsilon$ can also be chosen to make make the half rectangle arbitrarily thin.\\
+    Otherwise, open rectangles separate each point in the open unit rectangle.\\
+    (c) $A^\complement = \{(1,0)\} \cup ((\frac{1}{2},1)\times (0,1))$, which is open since it is 
+    $\bigcup_{\epsilon \in (0,1)} D_\epsilon$. Thus $A$ is closed. \\
+    (d) $\sim$ is equal to $A\times A$. Since $A$ is closed, the product is closed.\\
+    (e) Consider the two points $A$ and $(1,0)$ in the quotient space. $A$ is not open so any open set containing it
+    in the original space would have to be the union of $\bigcup_{\epsilon \in (0,1)} C_\epsilon$
+    and some open rectangle in $(\frac{1}{2},k)\times (0,1)$. However, any open set containing $(1,0)$ will intersected
+    any open set in $(\frac{1}{2},k)\times (0,1)$, thus the quotient is not Hausdorff
+    \qed
+\end{s}
+
+\begin{p}{3.18}
+    Let $A\subseteq \mathbb{R}$ be the set of integers, and let $X$ be the quotient space $\mathbb{R} / A$
+    obtained by collapsing $A$ to a point as in Example 3.52. (We are not using the notation $\mathbb{R}/\mathbb{Z}$
+    for this space because that has a different meaning, described in Example 3.92.)\\
+    (a) Show that $X$ is homeomorphic to a wedge sum of countably infinitely many circles. [Hint: express both 
+    spaces as a quotient of disjoint union of intervals.]\\
+    (b) Show that the equivalence class $A$ does not have a countable neighborhood basis in $X$, so $X$ is not 
+    first or second countable.
+\end{p}
+\begin{s}{3.18}
+    (a) $\mathbb{R}$ can be expressed as $\cup_{\alpha \in A} I_{\alpha,\alpha+1}$, i.e. unit intervals indexed
+    by the set of integers. Note that the ends points are exactly the elements of $A$, by construction. 
+    We can first identify the endpoints of each interval with each other, i.e. 
+    $\cup_{\alpha \in A} I_{\alpha,\alpha+1} / \{\alpha,\alpha+1\}$. Then notice that all terms of the union are 
+    disjoint, thus it is homeomorphic to $\coprod_{\alpha \in A} I_{\alpha,\alpha+1} / \{\alpha,\alpha+1\}$.
+    Then identify all the $\{\alpha,\alpha+1\}$ in each term,
+    $$(\coprod_{\alpha \in A} I_{\alpha,\alpha+1} / \{\alpha,\alpha+1\})/{[A]}$$
+    where $[A]$ is the set $A$ in the quotient. Thus we have collapsed the original set $A$ to a countably infinite
+    wedge sum of circles.\\
+    (b) Assume to the contrary that the point $[A]$ in the quotient has a countable neighborhood basis. Thus 
+    there exists $U_1,U_2,U_3,\dots$ such that every open neighborhood of $[A]$ is contained in one of the basis listed.
+    An open neighborhood of $[A]$ will be an open interval around some point of $A$ in each term of the disjoint sum in
+    the preimage of the quotient. Then construct an open neighborhood of $[A]$ by choosing for each $U_i$, an interval
+    that is strictly contained within the $i$th term of the disjoint sum's interval. Then by construction, our open 
+    neighborhood $U$ is not contained in any $U_i$, thus contradicting the assumption that the quotient space is 
+    first countable.
+    \qed
+\end{s}
+
+\begin{p}{3.19}
+    Let $G$ be a topological group and let $H \subseteq G$ be a subgroup. Show that its closure $\overline{H}$ 
+    is also a subgroup.
+\end{p}
+\begin{s}{3.19}
+    Notice that the binary op in the next problem looks like the subgroup criterion. Using the result in problem 3.20,
+    we have that $f: G \times G \to G$ given by $(x,y) \mapsto xy^{-1}$ is continuous. \\
+    Since $f$ is continuous, and since $\overline{H}$ is closed, the preimage of $f^{-1}(\overline{H})$
+    is also closed. Then we have that $\overline{H\times H} \subseteq f^{-1}(\overline{H})$.
+    Using the fact that $\overline{H}\times\overline{H} = \overline{H\times H}$, 
+    we have that $\overline{H}\times\overline{H} \subseteq \overline{H\times H} \subseteq f^{-1}(\overline{H})$.
+    Applying $f$ to each set we get 
+    $$f(\overline{H}\times\overline{H}) \subseteq f(\overline{H\times H}) \subseteq \overline{H}$$
+    By the subgroup criterion, we have that $\overline{H}$ is a subgroup of $G$.
+    \qed
+\end{s}
+
+\begin{p}{3.20}
+    Suppose $G$ is a group that is also a topological space. Show that $G$ is a topolgical group if and only if the
+    map $G \times G \to G$ given by $(x,y) \mapsto xy^{-1}$ is continuous.
+\end{p}
+\begin{s}{3.20}
+    Assume $G$ is a topological group. Since both the identity map and inverse maps are continuous, we have that
+    the map $G\times G \to G\times G$ given by $(x,y) \mapsto (id(x), y^{-1})=(x,y^{-1})$ is continuous. Then composing
+    such a map with the multiplication map, which is also continuous, we have that 
+    $$(x,y)\mapsto (x,y^{-1}) \mapsto xy^{-1}$$
+    is continuous.\\
+    Assume that the map given by $(x,y) \mapsto xy^{-1}$ is continuous. Since this applies for all $x \in G$, we can 
+    fix $x=e$, that is the identity element in the group $G$. Then we have that for all $y\in G$, 
+    $(e,y) \mapsto ey^{-1}= y^{-1}$, which is homeomorphic to the map on $G\to G$ given by $y \mapsto y^{-1}$, 
+    that is the inverse map on $G$ is continuous. Then define a map similarly as above, using the fact that 
+    the identity map and the inverse maps are continuous, to get that 
+    $$(x,y) \mapsto (x,y^{-1}) \mapsto x(y^{-1})^{-1} = xy$$
+    is continuous.
+    \qed
+\end{s}
+
+\begin{p}{3.21}
+    Let $G$ be a topological group and $\Gamma \subseteq G$ be a subgroup.\\
+    (a) For each $g\in G$, show that there is a homeomorphism $\theta_g : G / \Gamma \to G / \Gamma$
+    such that the folliwing diagram commutes:
+    \[
+    \begin{tikzcd}
+        G \arrow{d}{} \arrow{r}{L_g} & G \arrow{d}{} \\
+        G / \Gamma \arrow{r}{\theta_g}  & G / \Gamma
+    \end{tikzcd}
+    \]
+    (b) Show that every coset space is topologically homogeneous.
+\end{p}
+\begin{s}{3.21}
+    (a) Applying $L_g$ then quotienting is $q_\Gamma \circ L_g(x) = (gx)\Gamma$. 
+    Then it is clear that our $\theta_g : g / \Gamma \to g / \Gamma$
+    should be $\theta_g(x\Gamma) = (gx)\Gamma$ where $gx$ is the group multiplication.
+    This mapping is continuous since the group multiplication is continuous. And the continuous inverse is given by 
+    $\theta_{g^{-1}}$ since 
+    $$\theta_{g^{-1}}(\theta_g(x\Gamma)) = (g^{-1}(gx))\Gamma = ((g^{-1}g)x)\Gamma = x\Gamma$$
+    (b) Every coset is topologically homogenous since each coset is formed by $g\Gamma$ for $g\in G$. Since $G$ is a group,
+    for any $x\in G, \exists g' \in G$ such that $g'g = x$. Then we can just apply $\theta_g'$ which is a homeomorphism.
+    \qed
+\end{s}
+
+\begin{p}{3.22}
+    Let $G$ be a group acting by homeomorphisms on a topological space $X$, and let $\mathscr{O} \subseteq X\times X$
+    be the subset defined by
+    $$\mathscr{O} = \{(x_1,x_2):x_1=g\cdot x_2 \text{for some } g \in G\}$$
+    (a) Show that the quotient map $X\to X / G$ is an open map.\\
+    (b) Conclude that $X/G$ is Hausdorff if and only if $\mathscr{O}$ is closed in $X\times X$.
+\end{p}
+\begin{s}{3.22}
+    (a) Let $U\subseteq X$ be open. Then we have that $q(U)=\{[O_x] \text{for }x \in U\}$, that is the orbits are 
+    the equivalence classes in the quotient space. Since $q^{-1}$ is continuous, we can 
+    map the points of $q(U)$ back to $X$, which is just $\bigcup_{g\in G} g(U)$. Since $G$ is an action by homeomorphisms,
+    each $g(U)$ is open, so the union is open. Thus since $q^{-1}(q(U))$ is open, we have that 
+    $q^(U)$ is open, thus $q$ is an open mapping.\\
+    (b) Since $q$ is an open mapping, the corollary 3.58 applies.
+    \qed
+\end{s}
+
+\begin{p}{3.23}
+    Suppose $\Gamma$ is a normal subgroup of the topological group $G$. Show that the quotient group $G/\Gamma$ is 
+    a topological group with the quotient topology. [Hint: it might be helpful to use Problems 3-5 and 3.22.]
+\end{p}
+\begin{s}{3.23}
+    
+\end{s}
 
 \begin{p}{}
 \end{p}
