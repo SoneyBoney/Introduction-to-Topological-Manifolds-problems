@@ -454,10 +454,9 @@
 \end{p}
 \begin{s}{3.22}
     (a) Let $U\subseteq X$ be open. Then we have that $q(U)=\{[O_x] \text{for }x \in U\}$, that is the orbits are 
-    the equivalence classes in the quotient space. Since $q^{-1}$ is continuous, we can 
-    map the points of $q(U)$ back to $X$, which is just $\bigcup_{g\in G} g(U)$. Since $G$ is an action by homeomorphisms,
-    each $g(U)$ is open, so the union is open. Thus since $q^{-1}(q(U))$ is open, we have that 
-    $q^(U)$ is open, thus $q$ is an open mapping.\\
+    the equivalence classes in the quotient space. $q^{-1}(q(U)) = \bigcup_{g\in G} g(U)$ since $G$ is an action
+    by homeomorphisms, each $g(U)$ is open, so the union is open. Thus since $q^{-1}(q(U))$ is open,
+    thus $q^(U)$ is open (in quotient topology), thus $q$ is an open mapping.\\
     (b) Since $q$ is an open mapping, the corollary 3.58 applies.
     \qed
 \end{s}
@@ -467,12 +466,41 @@
     a topological group with the quotient topology. [Hint: it might be helpful to use Problems 3-5 and 3.22.]
 \end{p}
 \begin{s}{3.23}
-    
+    Consider the commutative diagram
+    \[
+    \begin{tikzcd}
+        G \times G \arrow{d}{Q} \arrow{r}{m} & G \arrow{d}{q} \\
+        G/\Gamma \times G/\Gamma \arrow{r}{M}  & G / \Gamma
+    \end{tikzcd}
+    \]
+    where $q$ is the canonical quotient map, $m$ the continuous inversion map $m(x,y) = xy^{-1}$, 
+    $M(x\Gamma,y\Gamma) = (xy^{-1})\Gamma$, and $Q((x,y)) = (q(x),q(y))$.\\
+    Need to show that $M$ is continuous. It is clear that $q \circ m$ is continuous.
+    The commutative diagram now looks like
+    \[
+    \begin{tikzcd}
+        G \times G \arrow{d}{Q} \arrow{dr}{q \circ m} \\
+        G/\Gamma \times G/\Gamma \arrow{r}{M}  & G / \Gamma
+    \end{tikzcd}
+    \]
+    Now since $q$ is an open map (from problem 3.22), and by 3.23 the product is also an open map. Which means
+    $Q$ is a quotient map. Thus the characteristic property of quotient maps applies, and since $q\circ m$ is 
+    continuous, $M$ is continuous.
+    \qed
 \end{s}
 
-\begin{p}{}
+\begin{p}{3.24}
+    Consider the action of $O(n)$ on $\mathbb{R}^n$ by matrix multiplication as in Example 3.88(b). 
+    Prove that the quotient space is homeomorphic to $[0,\infty)$. [Hint: consider the function
+    $f: \mathbb{R}^n \to [0,\infty)$ given by $f(x)=|x|$.]
 \end{p}
-\begin{s}{}
+\begin{s}{3.24}
+    From example 3.88b, we know that the orbits of this group action is the spheres centered at 0 and the origin.
+    Following the hint, the mapping from an element to its norm is continuous. Now we just need to construct a 
+    continuous inverse, $g: [0,\infty) \to \mathbb{R}^n/O(n)$. Consider the embedding
+    $x \mapsto (x,\dots,0)$ from $[0,\infty) \to \mathbb{R}^n$. It is clearly continuous. 
+    Then quotienting by $O(n)$ gives us our continuous inverse.
+    \qed
 \end{s}
 
 \end{document}
