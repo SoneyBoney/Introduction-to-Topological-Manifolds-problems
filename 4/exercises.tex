@@ -1,0 +1,123 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%This is a science homework template. Modify the preamble to suit your needs. 
+%The junk text is   there for you to immediately see how the headers/footers look at first 
+%typesetting.
+
+
+\documentclass[12pt]{article}
+
+%AMS-TeX packages
+\usepackage{amssymb,amsmath,amsthm} 
+%geometry (sets margin) and other useful packages
+\usepackage[margin=1.25in]{geometry}
+\usepackage{tikz-cd}
+\usepackage{graphicx,ctable,booktabs,mathrsfs}
+
+
+
+%
+%Redefining sections as problems
+%
+\makeatletter
+\newenvironment{p}{\@startsection
+       {section}
+       {1}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent{P }
+       }
+       }
+\makeatother
+
+\makeatletter
+\newenvironment{s}{\@startsection
+       {subsection}
+       {2}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent\emph{(sol) }
+       }
+       }
+\makeatother
+
+%
+%Fancy-header package to modify header/page numbering 
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep} %these change header-rule width
+%\addtolength{\headwidth}{\marginparwidth}
+\chead{} 
+\rhead{\thepage} 
+\cfoot{} 
+\renewcommand{\headrulewidth}{.3pt} 
+\renewcommand{\footrulewidth}{.3pt}
+\setlength\voffset{-0.25in}
+\setlength\textheight{648pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%Contents of problem set
+%    
+\begin{document}
+
+\title{Chapter 4 Exercises}
+\author{Campinghedgehog}
+\date{November 11, 2023}
+
+\maketitle
+
+\thispagestyle{empty}
+
+
+\begin{p}{4.3}
+    Suppose $X$ is a connected topological space, and $\sim$ is an equivalence relation on $X$ such that every
+    equivalence class is open. Show that there is exactly one equivalence class, namely $X$ itself.
+\end{p}
+\begin{s}{4.3}
+    By definition, equivalence relations partition a set into disjoint subsets. If there were more than 1 non-empty 
+    partitions, then by proposition 4.1, $X$ would be disconnected.
+    \qed
+\end{s}
+
+\begin{p}{4.4}
+    Prove that a topological space $X$ is disconnected if and only if there exists a nonconstant continuous function
+    from $X$ to the discrete space $\{0,1\}$.
+\end{p}
+\begin{s}{4.4}
+    The contraposition of propostion 4.2 implies that if there exists a non-constant continuous function from $X$ 
+    to $\{0,1\}$, then $X$ is disconnected. Thus we only need to show that if $X$ is disconnected, then there exists 
+    a continuous non-constant function from $X\to \{0,1\}$.\\
+    Let $X$ be disconnected. Then $\exists U,V \subseteq X$ such that $X = U \cup V$ and $U \cap V = \emptyset$.
+    Then the function $f$ such that $f(U) = \{0\}$ and $f(V) = \{1\}$ is a continuous function because 
+    $\{0\}$ is both open and closed and so is $U$. Same for $V$ and $\{1\}$. Furthermore $f$ is not constant.
+    \qed
+\end{s}
+
+\begin{p}{4.5}
+    Prove that a topological space is disconnected if and only if it is homeomorphic to a disjoint union of 
+    two or more topological spaces.
+\end{p}
+\begin{s}{4.5}
+    Let $X$ be a disconnected topological space. Then $\exists U,V \subseteq X$ such that $X = U \cup V$ and $U \cap V = \emptyset$.
+    Let $Y = U \coprod V$. Then the identity map from $X \to Y$ where if $x\in U$ $x \mapsto (0,x)$
+    and $y\in V, y\mapsto (1,y)$ is a homeomorphism between $X$ and $Y$. It is clearly bijective,
+    then the open sets are also bijective since both $U$ and $V$ are open,
+    $U$ and $V$ considered as topological spaces themselves have the same open sets as the subspace topology, which 
+    has the same open sets as $X$ intersect either $U$ or $V$ respectively.\\
+    Assume that $X$ is homeomorphic to a disjoint union of two or more topological spaces, call it $Y = U \coprod V$.
+    Then $f^{-1}(U)$ is open and $f^{-1}(V)$ is open and they are disjoint and their union is all of $X$.
+    \qed
+\end{s}
+
+\begin{p}{}
+\end{p}
+\begin{s}{}
+\end{s}
+
+\end{document}
